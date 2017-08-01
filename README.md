@@ -1,4 +1,5 @@
 # Camera Angulara
+[![npm version](https://badge.fury.io/js/camera-angulara.svg)](https://badge.fury.io/js/camera-angulara)
 
 Camera Angulara (inspired by the term _camera obscura_) is an Angular 4+ camera module that allows for pictures
 to be taken, uploaded with a lot of customizable settings. It uses different browser's native `getUserMedia()` methods

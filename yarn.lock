@@ -4291,6 +4291,12 @@ wbuf@^1.1.0, wbuf@^1.7.2:
   dependencies:
     minimalistic-assert "^1.0.0"
 
+weallbehave@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/weallbehave/-/weallbehave-1.2.0.tgz#851efd554025a34e8ef2499e4780c4407732161b"
+  dependencies:
+    yargs "^6.6.0"
+
 weallcontribute@^1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/weallcontribute/-/weallcontribute-1.0.8.tgz#91801eeb2b100678e844b720bdd87543c31cd90a"
