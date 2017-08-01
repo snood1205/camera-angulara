@@ -20,7 +20,7 @@ var CameraAngularaComponent = (function () {
     CameraAngularaComponent.decorators = [
         { type: Component, args: [{
                     selector: 'camera-angulara-component',
-                    templateUrl: './camera-angulara.component.html'
+                    template: "\n      <video-angulara-component *ngIf=\"stream\" [srcObject]=\"stream\" (onCanPlay)=\"resizeOnCanPlay(dimensions)\"\n                                [height]=\"video.height\" [width]=\"video.width\"\n                                [alt]=\"'Video stream is not available.'\"></video-angulara-component>\n      <button (click)=\"takePhoto()\">Take Photo</button>\n      <canvas [width]=\"canvas.width\" [height]=\"canvas.height\"></canvas>\n      <div class=\"output\">\n          <img alt=\"User's screen capture\">\n      </div>"
                 },] },
     ];
     /** @nocollapse */
