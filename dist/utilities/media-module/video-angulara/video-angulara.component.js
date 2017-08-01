@@ -50,13 +50,11 @@ var VideoAngularaComponent = (function (_super) {
     VideoAngularaComponent.prototype.constructVideoElementAttributes = function () {
         return {
             autoplay: this.autoplay,
-            buffered: this.buffered || this.video.buffered,
             controls: this.controls,
             crossOrigin: this.crossOrigin,
             height: this.height,
             loop: this.loop,
             muted: this.muted,
-            played: this.played || this.video.buffered,
             preload: this.preload,
             poster: this.poster,
             src: this.src,
@@ -75,13 +73,11 @@ var VideoAngularaComponent = (function (_super) {
     VideoAngularaComponent.propDecorators = {
         'alt': [{ type: Input },],
         'autoplay': [{ type: Input },],
-        'buffered': [{ type: Input },],
         'controls': [{ type: Input },],
         'crossOrigin': [{ type: Input },],
         'height': [{ type: Input },],
         'loop': [{ type: Input },],
         'muted': [{ type: Input },],
-        'played': [{ type: Input },],
         'preload': [{ type: Input },],
         'poster': [{ type: Input },],
         'src': [{ type: Input },],

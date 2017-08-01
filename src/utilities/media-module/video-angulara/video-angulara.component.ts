@@ -10,13 +10,11 @@ import { MediaEventsComponent } from '../media-events/media-events.component'
 export class VideoAngularaComponent extends MediaEventsComponent implements OnInit {
   @Input() alt: string
   @Input() autoplay: boolean = false
-  @Input() buffered?: TimeRanges
   @Input() controls: boolean = false
   @Input() crossOrigin: 'anonymous' | 'use-credentials' | null = null
   @Input() height: number = 0
   @Input() loop: boolean = false
   @Input() muted: boolean = false
-  @Input() played?: TimeRanges
   @Input() preload: 'none' | 'metadata' | 'auto' | '' = 'auto'
   @Input() poster: string = ''
   @Input() src: string = ''
@@ -47,13 +45,11 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
   private constructVideoElementAttributes (): IVideoElementAttributes {
     return {
       autoplay: this.autoplay,
-      buffered: this.buffered || this.video.buffered,
       controls: this.controls,
       crossOrigin: this.crossOrigin,
       height: this.height,
       loop: this.loop,
       muted: this.muted,
-      played: this.played || this.video.buffered,
       preload: this.preload,
       poster: this.poster,
       src: this.src,
