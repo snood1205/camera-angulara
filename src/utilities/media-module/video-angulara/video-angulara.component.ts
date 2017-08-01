@@ -5,10 +5,9 @@ import { MediaEventsComponent } from '../media-events/media-events.component'
 @Component({
   selector: 'video-angulara-component',
   template: `
-      <video #videoEl>{{alt}}</video>`
+      <video #videoEl [height]="height" [width]="width">{{alt}}</video>`
 })
 export class VideoAngularaComponent extends MediaEventsComponent implements OnInit {
-  @ViewChild('videoEl') private videoEl: ElementRef
   @Input() alt: string
   @Input() autoplay: boolean = false
   @Input() buffered?: TimeRanges
@@ -22,7 +21,9 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
   @Input() poster: string = ''
   @Input() src: string = ''
   @Input() srcObject: object = null
+  @Input() streaming: boolean
   @Input() width: number = 0
+  @ViewChild('videoEl') private videoEl: ElementRef
 
   ngOnInit () {
     super.ngOnInit()

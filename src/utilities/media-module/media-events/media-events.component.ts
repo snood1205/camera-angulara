@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core'
+import { Component, Input, Output, EventEmitter, OnInit, Renderer2 } from '@angular/core'
 import { Experimental } from '../../decorators/experimental.decorator'
 import { IOutputBindingOptions } from '../../interfaces/IOutputBindingOptions'
 
@@ -56,9 +56,9 @@ export abstract class MediaEventsComponent implements OnInit {
   @Input() onVolumeChangeOptions: IOutputBindingOptions = {preventDefault: false}
   @Input() onWaitingOptions: IOutputBindingOptions = {preventDefault: false}
 
-  eventListeners: { [name: string]: { eventEmitter: EventEmitter<any>, options: IOutputBindingOptions } }
+  eventListeners: { [name: string]: { eventEmitter: EventEmitter<any>, options: IOutputBindingOptions, listener? } }
 
-  constructor (protected mediaElement: HTMLMediaElement) {
+  constructor (protected mediaElement: HTMLMediaElement, protected renderer: Renderer2) {
   }
 
   ngOnInit () {
@@ -100,7 +100,7 @@ export abstract class MediaEventsComponent implements OnInit {
     Object.keys(this.eventListeners).forEach(key => {
       const value = this.eventListeners[key]
       if (this.eventListeners.hasOwnProperty(key)) {
-        this.mediaElement.addEventListener(key, (event) => {
+        this.eventListeners[key].listener = this.renderer.listen(this.mediaElement, key, (event) => {
           if (value.options.preventDefault) {
             event.preventDefault()
           }

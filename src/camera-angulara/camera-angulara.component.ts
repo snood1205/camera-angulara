@@ -7,8 +7,8 @@ import { IDimensions } from '../utilities/interfaces/IDimensions'
 })
 export class CameraAngularaComponent implements OnInit {
   @Input() countdown: number
-  @Input() outputDimensions: IDimensions
-  @Input() viewerDimensions: IDimensions
+  @Input() canvas: IDimensions
+  @Input() video: IDimensions
   @Input() width: number = 320
   @Input() imageFormat: string
   @Input() captureMessage: string
@@ -23,5 +23,11 @@ export class CameraAngularaComponent implements OnInit {
   ngOnInit () {
     this.navigator.mediaDevices.getUserMedia(({video: true, audio: false}))
       .then((stream) => this.stream = stream)
+  }
+
+  resizeOnCanPlay () {
+    if (!this.streaming) {
+      this.height =
+    }
   }
 }

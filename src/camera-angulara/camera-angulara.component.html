@@ -1,7 +1,8 @@
-<video-angulara-component *ngIf="stream" [srcObject]="stream"
+<video-angulara-component *ngIf="stream" [srcObject]="stream" (onCanPlay)="resizeOnCanPlay()"
+                          [height]="video.height" [width]="video.width"
                           [alt]="'Video stream is not available.'"></video-angulara-component>
 <button (click)="takePhoto()">Take Photo</button>
-<canvas></canvas>
+<canvas [width]="canvas.width" [height]="canvas.height"></canvas>
 <div class="output">
     <img alt="User's screen capture">
 </div>
