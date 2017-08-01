@@ -29,12 +29,13 @@ export class CameraAngularaComponent implements OnInit {
   }
 
   ngOnInit () {
+    this.video = {height: this.height, width: this.width}
+    this.canvas = {height: this.height, width: this.width}
     this.navigator.mediaDevices.getUserMedia(({video: true, audio: false}))
       .then((stream) => this.stream = stream)
   }
 
   resizeOnCanPlay (video) {
-    console.log(video)
     if (!this.streaming) {
       this.height = video.videoHeight / (video.videoWidth / this.width)
       this.streaming = true
