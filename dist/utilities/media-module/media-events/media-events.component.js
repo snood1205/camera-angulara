@@ -27,31 +27,31 @@ var MediaEventsComponent = (function () {
         this.onTimeUpdate = new EventEmitter();
         this.onVolumeChange = new EventEmitter();
         this.onWaiting = new EventEmitter();
-        this.onAbortOptions = { preventDefault: false, runOnce: true };
-        this.onCanPlayOptions = { preventDefault: false, runOnce: true };
-        this.onCanPlayThroughOptions = { preventDefault: false, runOnce: true };
-        this.onDurationChangeOptions = { preventDefault: false, runOnce: true };
-        this.onEmptiedOptions = { preventDefault: false, runOnce: true };
-        this.onEncryptedOptions = { preventDefault: false, runOnce: true };
-        this.onEndedOptions = { preventDefault: false, runOnce: true };
-        this.onErrorOptions = { preventDefault: false, runOnce: true };
-        this.onInterruptBeginOptions = { preventDefault: false, runOnce: true };
-        this.onInterruptEndOptions = { preventDefault: false, runOnce: true };
-        this.onLoadedDataOptions = { preventDefault: false, runOnce: true };
-        this.onLoadedMetadataOptions = { preventDefault: false, runOnce: true };
-        this.onLoadStartOptions = { preventDefault: false, runOnce: true };
-        this.onPauseOptions = { preventDefault: false, runOnce: true };
-        this.onPlayOptions = { preventDefault: false, runOnce: true };
-        this.onPlayingOptions = { preventDefault: false, runOnce: true };
-        this.onProgressOptions = { preventDefault: false, runOnce: true };
-        this.onRateChangeOptions = { preventDefault: false, runOnce: true };
-        this.onSeekedOptions = { preventDefault: false, runOnce: true };
-        this.onSeekingOptions = { preventDefault: false, runOnce: true };
-        this.onStalledOptions = { preventDefault: false, runOnce: true };
-        this.onSuspendOptions = { preventDefault: false, runOnce: true };
-        this.onTimeUpdateOptions = { preventDefault: false, runOnce: true };
-        this.onVolumeChangeOptions = { preventDefault: false, runOnce: true };
-        this.onWaitingOptions = { preventDefault: false, runOnce: true };
+        this.onAbortOptions = { preventDefault: false, skip: true };
+        this.onCanPlayOptions = { preventDefault: false, skip: true };
+        this.onCanPlayThroughOptions = { preventDefault: false, skip: true };
+        this.onDurationChangeOptions = { preventDefault: false, skip: true };
+        this.onEmptiedOptions = { preventDefault: false, skip: true };
+        this.onEncryptedOptions = { preventDefault: false, skip: true };
+        this.onEndedOptions = { preventDefault: false, skip: true };
+        this.onErrorOptions = { preventDefault: false, skip: true };
+        this.onInterruptBeginOptions = { preventDefault: false, skip: true };
+        this.onInterruptEndOptions = { preventDefault: false, skip: true };
+        this.onLoadedDataOptions = { preventDefault: false, skip: true };
+        this.onLoadedMetadataOptions = { preventDefault: false, skip: true };
+        this.onLoadStartOptions = { preventDefault: false, skip: true };
+        this.onPauseOptions = { preventDefault: false, skip: true };
+        this.onPlayOptions = { preventDefault: false, skip: true };
+        this.onPlayingOptions = { preventDefault: false, skip: true };
+        this.onProgressOptions = { preventDefault: false, skip: true };
+        this.onRateChangeOptions = { preventDefault: false, skip: true };
+        this.onSeekedOptions = { preventDefault: false, skip: true };
+        this.onSeekingOptions = { preventDefault: false, skip: true };
+        this.onStalledOptions = { preventDefault: false, skip: true };
+        this.onSuspendOptions = { preventDefault: false, skip: true };
+        this.onTimeUpdateOptions = { preventDefault: false, skip: true };
+        this.onVolumeChangeOptions = { preventDefault: false, skip: true };
+        this.onWaitingOptions = { preventDefault: false, skip: true };
     }
     MediaEventsComponent.prototype.ngOnInit = function () {
         this.eventListeners = {
@@ -93,6 +93,8 @@ var MediaEventsComponent = (function () {
         Object.keys(this.eventListeners).forEach(function (key) {
             var value = _this.eventListeners[key];
             if (_this.eventListeners.hasOwnProperty(key)) {
+                if (value.options.skip)
+                    return;
                 _this.eventListeners[key].listener = _this.renderer.listen(_this.mediaElement, key, function (event) {
                     if (value.options.preventDefault) {
                         event.preventDefault();
