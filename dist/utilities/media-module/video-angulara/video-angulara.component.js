@@ -8,8 +8,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, forwardRef, Input, ViewChild } from '@angular/core';
 import { MediaEventsComponent } from '../media-events/media-events.component';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 var VideoAngularaComponent = (function (_super) {
     __extends(VideoAngularaComponent, _super);
     function VideoAngularaComponent() {
@@ -36,6 +37,10 @@ var VideoAngularaComponent = (function (_super) {
     VideoAngularaComponent.prototype.ngOnChanges = function () {
         console.log(this.videoObj);
     };
+    VideoAngularaComponent.prototype.writeValue = function (value) {
+        this.value = value;
+        this.onChange(value);
+    };
     Object.defineProperty(VideoAngularaComponent.prototype, "video", {
         get: function () {
             if (this.videoEl == null) {
@@ -49,6 +54,25 @@ var VideoAngularaComponent = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(VideoAngularaComponent.prototype, "value", {
+        get: function () {
+            return this.videoObj;
+        },
+        set: function (value) {
+            if (this.videoObj !== value) {
+                this.videoObj = value;
+                this.onChange(value);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    VideoAngularaComponent.prototype.registerOnChange = function (fn) {
+        this.onChange = fn;
+    };
+    VideoAngularaComponent.prototype.registerOnTouched = function (fn) {
+        this.onTouched = fn;
+    };
     VideoAngularaComponent.prototype.constructVideoElementAttributes = function () {
         return {
             autoplay: this.autoplay,
@@ -67,7 +91,14 @@ var VideoAngularaComponent = (function (_super) {
     VideoAngularaComponent.decorators = [
         { type: Component, args: [{
                     selector: 'video-angulara-component',
-                    template: "\n      <video #videoEl [height]=\"height\" [width]=\"width\" [(ngModel)]=\"videoObj\">{{alt}}</video>"
+                    template: "\n      <video #videoEl [height]=\"height\" [width]=\"width\" [(ngModel)]=\"videoObj\">{{alt}}</video>",
+                    providers: [
+                        {
+                            provide: NG_VALUE_ACCESSOR,
+                            useExisting: forwardRef(function () { return VideoAngularaComponent; }),
+                            multi: true
+                        }
+                    ]
                 },] },
     ];
     /** @nocollapse */

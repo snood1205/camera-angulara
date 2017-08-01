@@ -1,13 +1,20 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core'
+import { Component, ElementRef, forwardRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core'
 import { IVideoElementAttributes } from '../../interfaces/IVideoElementAttributes'
 import { MediaEventsComponent } from '../media-events/media-events.component'
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 
 @Component({
   selector: 'video-angulara-component',
   template: `
-      <video #videoEl [height]="height" [width]="width" [(ngModel)]="videoObj">{{alt}}</video>`
+      <video #videoEl [height]="height" [width]="width" [(ngModel)]="videoObj">{{alt}}</video>`,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => VideoAngularaComponent),
+      multi: true
+    }]
 })
-export class VideoAngularaComponent extends MediaEventsComponent implements OnInit, OnChanges {
+export class VideoAngularaComponent extends MediaEventsComponent implements OnInit, ControlValueAccessor {
   @Input() alt: string
   @Input() autoplay: boolean = false
   @Input() controls: boolean = false
@@ -22,6 +29,8 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
   @Input() streaming: boolean
   @Input() width: number = 0
   videoObj
+  onChange: (_) => void
+  onTouched: () => void
   @ViewChild('videoEl') private videoEl: ElementRef
 
   ngOnInit () {
@@ -35,6 +44,11 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
     console.log(this.videoObj)
   }
 
+  writeValue (value) {
+    this.value = value
+    this.onChange(value)
+  }
+
   get video (): HTMLVideoElement {
     if (this.videoEl == null) {
       return null
@@ -44,6 +58,25 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
 
   set video (video: HTMLVideoElement) {
     this.videoEl.nativeElement = video
+  }
+
+  get value () {
+    return this.videoObj
+  }
+
+  set value (value) {
+    if (this.videoObj !== value) {
+      this.videoObj = value
+      this.onChange(value)
+    }
+  }
+
+  registerOnChange (fn) {
+    this.onChange = fn
+  }
+
+  registerOnTouched (fn) {
+    this.onTouched = fn
   }
 
   private constructVideoElementAttributes (): IVideoElementAttributes {

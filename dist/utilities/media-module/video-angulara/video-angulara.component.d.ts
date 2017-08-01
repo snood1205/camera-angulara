@@ -1,6 +1,7 @@
-import { OnChanges, OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { MediaEventsComponent } from '../media-events/media-events.component';
-export declare class VideoAngularaComponent extends MediaEventsComponent implements OnInit, OnChanges {
+import { ControlValueAccessor } from '@angular/forms';
+export declare class VideoAngularaComponent extends MediaEventsComponent implements OnInit, ControlValueAccessor {
     alt: string;
     autoplay: boolean;
     controls: boolean;
@@ -15,9 +16,15 @@ export declare class VideoAngularaComponent extends MediaEventsComponent impleme
     streaming: boolean;
     width: number;
     videoObj: any;
+    onChange: (_) => void;
+    onTouched: () => void;
     private videoEl;
     ngOnInit(): void;
     ngOnChanges(): void;
+    writeValue(value: any): void;
     video: HTMLVideoElement;
+    value: any;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
     private constructVideoElementAttributes();
 }
