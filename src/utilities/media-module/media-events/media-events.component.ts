@@ -57,7 +57,9 @@ export abstract class MediaEventsComponent implements OnInit {
 
   eventListeners: { [name: string]: { eventEmitter: EventEmitter<any>, options: IOutputBindingOptions, listener? } }
 
-  constructor (protected mediaElement: HTMLMediaElement, protected renderer: Renderer2) {
+  protected mediaElement: HTMLMediaElement
+
+  constructor (protected renderer: Renderer2) {
   }
 
   ngOnInit () {
