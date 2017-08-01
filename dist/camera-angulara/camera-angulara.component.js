@@ -8,11 +8,12 @@ var CameraAngularaComponent = (function () {
     }
     CameraAngularaComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.video = { height: this.height, width: this.width };
+        this.canvas = { height: this.height, width: this.width };
         this.navigator.mediaDevices.getUserMedia(({ video: true, audio: false }))
             .then(function (stream) { return _this.stream = stream; });
     };
     CameraAngularaComponent.prototype.resizeOnCanPlay = function (video) {
-        console.log(video);
         if (!this.streaming) {
             this.height = video.videoHeight / (video.videoWidth / this.width);
             this.streaming = true;
