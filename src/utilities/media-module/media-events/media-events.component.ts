@@ -29,31 +29,31 @@ export abstract class MediaEventsComponent implements OnInit, DoCheck {
   @Output() onVolumeChange = new EventEmitter()
   @Output() onWaiting = new EventEmitter()
 
-  @Input() onAbortOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onCanPlayOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onCanPlayThroughOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onDurationChangeOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onEmptiedOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onEncryptedOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onEndedOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onErrorOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onInterruptBeginOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onInterruptEndOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onLoadedDataOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onLoadedMetadataOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onLoadStartOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onPauseOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onPlayOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onPlayingOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onProgressOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onRateChangeOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onSeekedOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onSeekingOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onStalledOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onSuspendOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onTimeUpdateOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onVolumeChangeOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
-  @Input() onWaitingOptions: IOutputBindingOptions = {preventDefault: false, runOnce: true}
+  @Input() onAbortOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onCanPlayOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onCanPlayThroughOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onDurationChangeOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onEmptiedOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onEncryptedOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onEndedOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onErrorOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onInterruptBeginOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onInterruptEndOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onLoadedDataOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onLoadedMetadataOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onLoadStartOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onPauseOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onPlayOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onPlayingOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onProgressOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onRateChangeOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onSeekedOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onSeekingOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onStalledOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onSuspendOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onTimeUpdateOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onVolumeChangeOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
+  @Input() onWaitingOptions: IOutputBindingOptions = {preventDefault: false, skip: true}
 
   eventListeners: { [name: string]: { eventEmitter: EventEmitter<any>, options: IOutputBindingOptions, listener? } }
 
@@ -104,6 +104,7 @@ export abstract class MediaEventsComponent implements OnInit, DoCheck {
     Object.keys(this.eventListeners).forEach(key => {
       const value = this.eventListeners[key]
       if (this.eventListeners.hasOwnProperty(key)) {
+        if (value.options.skip) return
         this.eventListeners[key].listener = this.renderer.listen(this.mediaElement, key, (event) => {
           if (value.options.preventDefault) {
             event.preventDefault()
