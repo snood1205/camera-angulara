@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core'
+import { Component, Inject, Input, OnInit } from '@angular/core'
 import { IDimensions } from '../utilities/interfaces/IDimensions'
+import { ICameraService } from '../ICamera.service'
 
 @Component({
   selector: 'camera-angulara-component',
@@ -25,8 +26,9 @@ export class CameraAngularaComponent implements OnInit {
   streaming: boolean = false
   canvas: IDimensions
   video: IDimensions
+  videoObj: object
 
-  constructor (@Inject('Navigator') private navigator: Navigator) {
+  constructor (@Inject('Navigator') private navigator: Navigator, private cameraService: ICameraService) {
   }
 
   ngOnInit () {
@@ -43,6 +45,6 @@ export class CameraAngularaComponent implements OnInit {
   }
 
   takePhoto () {
-
+    this.cameraService.upload(this.videoObj)
   }
 }

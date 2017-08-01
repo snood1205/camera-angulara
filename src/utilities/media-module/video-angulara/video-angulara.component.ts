@@ -1,7 +1,7 @@
-import { Component, ElementRef, forwardRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core'
+import { Component, ElementRef, forwardRef, Input, OnInit, ViewChild } from '@angular/core'
 import { IVideoElementAttributes } from '../../interfaces/IVideoElementAttributes'
 import { MediaEventsComponent } from '../media-events/media-events.component'
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
 
 @Component({
   selector: 'video-angulara-component',
@@ -14,7 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
       multi: true
     }]
 })
-export class VideoAngularaComponent extends MediaEventsComponent implements OnInit, ControlValueAccessor {
+export class VideoAngularaComponent extends MediaEventsComponent implements OnInit {
   @Input() alt: string
   @Input() autoplay: boolean = false
   @Input() controls: boolean = false
@@ -40,10 +40,6 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
     this.eventListeners.canplay.options.runOnce = true
   }
 
-  ngOnChanges () {
-    console.log(this.videoObj)
-  }
-
   writeValue (value) {
     this.value = value
     this.onChange(value)
@@ -64,6 +60,7 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
     return this.videoObj
   }
 
+  @Input()
   set value (value) {
     if (this.videoObj !== value) {
       this.videoObj = value
