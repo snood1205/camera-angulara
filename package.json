@@ -2,7 +2,7 @@
   "name": "camera-angulara",
   "version": "0.1.0",
   "description": "A friendly interface for taking pictures in angular and uploading them.",
-  "outdir": "./dist",
+  "outDir": "./dist",
   "main": "./dist/camera-angulara.bundle.js",
   "module": "./dist/camera-angulara.module.js",
   "jsnext:main": "./dist/camera-angulara.module.js",
