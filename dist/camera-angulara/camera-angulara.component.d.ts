@@ -3,8 +3,8 @@ import { IDimensions } from '../utilities/interfaces/IDimensions';
 export declare class CameraAngularaComponent implements OnInit {
     private navigator;
     countdown: number;
-    outputDimensions: IDimensions;
-    viewerDimensions: IDimensions;
+    canvas: IDimensions;
+    video: IDimensions;
     width: number;
     imageFormat: string;
     captureMessage: string;
@@ -13,4 +13,5 @@ export declare class CameraAngularaComponent implements OnInit {
     streaming: boolean;
     constructor(navigator: Navigator);
     ngOnInit(): void;
+    resizeOnCanPlay(video: any): void;
 }

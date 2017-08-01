@@ -1,7 +1,6 @@
 import { OnInit } from '@angular/core';
 import { MediaEventsComponent } from '../media-events/media-events.component';
 export declare class VideoAngularaComponent extends MediaEventsComponent implements OnInit {
-    private videoEl;
     alt: string;
     autoplay: boolean;
     buffered?: TimeRanges;
@@ -15,7 +14,9 @@ export declare class VideoAngularaComponent extends MediaEventsComponent impleme
     poster: string;
     src: string;
     srcObject: object;
+    streaming: boolean;
     width: number;
+    private videoEl;
     ngOnInit(): void;
     video: HTMLVideoElement;
     private constructVideoElementAttributes();

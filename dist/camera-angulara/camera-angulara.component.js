@@ -11,6 +11,12 @@ var CameraAngularaComponent = (function () {
         this.navigator.mediaDevices.getUserMedia(({ video: true, audio: false }))
             .then(function (stream) { return _this.stream = stream; });
     };
+    CameraAngularaComponent.prototype.resizeOnCanPlay = function (video) {
+        if (!this.streaming) {
+            this.height = video.videoHeight / (video.videoWidth / this.width);
+            this.streaming = true;
+        }
+    };
     CameraAngularaComponent.decorators = [
         { type: Component, args: [{
                     selector: 'camera-angulara-component',
@@ -23,8 +29,8 @@ var CameraAngularaComponent = (function () {
     ]; };
     CameraAngularaComponent.propDecorators = {
         'countdown': [{ type: Input },],
-        'outputDimensions': [{ type: Input },],
-        'viewerDimensions': [{ type: Input },],
+        'canvas': [{ type: Input },],
+        'video': [{ type: Input },],
         'width': [{ type: Input },],
         'imageFormat': [{ type: Input },],
         'captureMessage': [{ type: Input },],

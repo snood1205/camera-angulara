@@ -7,11 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
 import { Experimental } from '../../decorators/experimental.decorator';
 var MediaEventsComponent = (function () {
-    function MediaEventsComponent(mediaElement) {
+    function MediaEventsComponent(mediaElement, renderer) {
         this.mediaElement = mediaElement;
+        this.renderer = renderer;
         this.onAbort = new EventEmitter();
         this.onCanPlay = new EventEmitter();
         this.onCanPlayThrough = new EventEmitter();
@@ -101,11 +102,13 @@ var MediaEventsComponent = (function () {
         Object.keys(this.eventListeners).forEach(function (key) {
             var value = _this.eventListeners[key];
             if (_this.eventListeners.hasOwnProperty(key)) {
-                _this.mediaElement.addEventListener(key, function (event) {
+                _this.eventListeners[key].listener = _this.renderer.listen(_this.mediaElement, key, function (event) {
                     if (value.options.preventDefault) {
                         event.preventDefault();
                     }
                     value.eventEmitter.emit.apply(_this, value.options.arguments);
+                    if (value.options.runOnce)
+                        return false;
                 });
             }
         });
@@ -116,6 +119,7 @@ var MediaEventsComponent = (function () {
     /** @nocollapse */
     MediaEventsComponent.ctorParameters = function () { return [
         { type: HTMLMediaElement, },
+        { type: Renderer2, },
     ]; };
     MediaEventsComponent.propDecorators = {
         'onAbort': [{ type: Output },],

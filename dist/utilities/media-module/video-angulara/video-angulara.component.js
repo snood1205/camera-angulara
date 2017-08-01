@@ -31,6 +31,8 @@ var VideoAngularaComponent = (function (_super) {
         _super.prototype.ngOnInit.call(this);
         Object.assign(this.video, this.constructVideoElementAttributes());
         this.mediaElement = this.video;
+        this.eventListeners.canplay.options.arguments = [{ height: this.video.videoHeight, width: this.video.videoWidth }];
+        this.eventListeners.canplay.options.runOnce = true;
     };
     Object.defineProperty(VideoAngularaComponent.prototype, "video", {
         get: function () {
@@ -65,13 +67,12 @@ var VideoAngularaComponent = (function (_super) {
     VideoAngularaComponent.decorators = [
         { type: Component, args: [{
                     selector: 'video-angulara-component',
-                    template: "\n      <video #videoEl>{{alt}}</video>"
+                    template: "\n      <video #videoEl [height]=\"height\" [width]=\"width\">{{alt}}</video>"
                 },] },
     ];
     /** @nocollapse */
     VideoAngularaComponent.ctorParameters = function () { return []; };
     VideoAngularaComponent.propDecorators = {
-        'videoEl': [{ type: ViewChild, args: ['videoEl',] },],
         'alt': [{ type: Input },],
         'autoplay': [{ type: Input },],
         'buffered': [{ type: Input },],
@@ -85,7 +86,9 @@ var VideoAngularaComponent = (function (_super) {
         'poster': [{ type: Input },],
         'src': [{ type: Input },],
         'srcObject': [{ type: Input },],
+        'streaming': [{ type: Input },],
         'width': [{ type: Input },],
+        'videoEl': [{ type: ViewChild, args: ['videoEl',] },],
     };
     return VideoAngularaComponent;
 }(MediaEventsComponent));
