@@ -1,8 +1,8 @@
-import { Component, Input, Output, EventEmitter, OnInit, Renderer2 } from '@angular/core'
+import { Component, Input, Output, EventEmitter, OnInit, Renderer2, DoCheck } from '@angular/core'
 import { IOutputBindingOptions } from '../../interfaces/IOutputBindingOptions'
 
 @Component({})
-export abstract class MediaEventsComponent implements OnInit {
+export abstract class MediaEventsComponent implements OnInit, DoCheck {
   @Output() onAbort = new EventEmitter()
   @Output() onCanPlay = new EventEmitter()
   @Output() onCanPlayThrough = new EventEmitter()
@@ -90,6 +90,9 @@ export abstract class MediaEventsComponent implements OnInit {
       volumechange: {eventEmitter: this.onVolumeChange, options: this.onVolumeChangeOptions},
       waiting: {eventEmitter: this.onWaiting, options: this.onWaitingOptions}
     }
+  }
+
+  ngDoCheck () {
     this.applyEventListeners()
   }
 

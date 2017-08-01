@@ -1,6 +1,6 @@
-import { EventEmitter, OnInit, Renderer2 } from '@angular/core';
+import { EventEmitter, OnInit, Renderer2, DoCheck } from '@angular/core';
 import { IOutputBindingOptions } from '../../interfaces/IOutputBindingOptions';
-export declare abstract class MediaEventsComponent implements OnInit {
+export declare abstract class MediaEventsComponent implements OnInit, DoCheck {
     protected renderer: Renderer2;
     onAbort: EventEmitter<{}>;
     onCanPlay: EventEmitter<{}>;
@@ -62,6 +62,7 @@ export declare abstract class MediaEventsComponent implements OnInit {
     protected mediaElement: HTMLMediaElement;
     constructor(renderer: Renderer2);
     ngOnInit(): void;
+    ngDoCheck(): void;
     play(): void;
     private applyEventListeners();
 }

@@ -81,6 +81,8 @@ var MediaEventsComponent = (function () {
             volumechange: { eventEmitter: this.onVolumeChange, options: this.onVolumeChangeOptions },
             waiting: { eventEmitter: this.onWaiting, options: this.onWaitingOptions }
         };
+    };
+    MediaEventsComponent.prototype.ngDoCheck = function () {
         this.applyEventListeners();
     };
     MediaEventsComponent.prototype.play = function () {
