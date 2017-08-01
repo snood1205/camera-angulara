@@ -1,7 +1,7 @@
 {
   "name": "camera-angulara",
-  "version": "0.1.0",
-  "description": "A friendly interface for taking pictures in angular and uploading them.",
+  "version": "0.1.0-ALPHA",
+  "description": "PRERELEASE NOT YET READY FOR USE - A friendly interface for taking pictures in angular and uploading them.",
   "outDir": "./dist",
   "main": "./dist/camera-angulara.bundle.js",
   "module": "./dist/camera-angulara.module.js",
@@ -10,6 +10,9 @@
   "repository": "https://github.com/snood1205/camera-angulara",
   "author": "Eli Sadoff <snood1205@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "update-contrib": "weallcontribute -o . && git add CONTRIBUTING.md && git commit -m 'docs(contributing): updated CONTRIBUTING.md'"
+  },
   "keywords": [
     "Angular",
     "Angular 2",
@@ -32,6 +35,7 @@
   "devDependencies": {
     "@angular/cli": "^1.2.6",
     "tslint": "^5.5.0",
-    "tslint-config-standard": "^6.0.1"
+    "tslint-config-standard": "^6.0.1",
+    "weallcontribute": "^1.0.8"
   }
 }
