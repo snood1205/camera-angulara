@@ -14,4 +14,5 @@ export declare class CameraAngularaComponent implements OnInit {
     constructor(navigator: Navigator);
     ngOnInit(): void;
     streamOnCanPlay(): void;
+    takePhoto(): void;
 }

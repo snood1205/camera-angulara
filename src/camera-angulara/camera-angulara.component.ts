@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core'
 import { IDimensions } from '../utilities/interfaces/IDimensions'
 
 @Component({
@@ -19,6 +19,7 @@ export class CameraAngularaComponent implements OnInit {
   @Input() height: number = 0
   @Input() imageFormat: string
   @Input() captureMessage: string
+  // @Output() onPhotoCapture: EventEmitter
 
   stream: MediaStream
   streaming: boolean = false
@@ -39,5 +40,9 @@ export class CameraAngularaComponent implements OnInit {
     if (!this.streaming) {
       this.streaming = true
     }
+  }
+
+  takePhoto () {
+
   }
 }

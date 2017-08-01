@@ -33,6 +33,9 @@ var VideoAngularaComponent = (function (_super) {
         this.mediaElement = this.video;
         this.eventListeners.canplay.options.runOnce = true;
     };
+    VideoAngularaComponent.prototype.ngOnChanges = function () {
+        console.log(this.videoObj);
+    };
     Object.defineProperty(VideoAngularaComponent.prototype, "video", {
         get: function () {
             if (this.videoEl == null) {
@@ -64,7 +67,7 @@ var VideoAngularaComponent = (function (_super) {
     VideoAngularaComponent.decorators = [
         { type: Component, args: [{
                     selector: 'video-angulara-component',
-                    template: "\n      <video #videoEl [height]=\"height\" [width]=\"width\">{{alt}}</video>"
+                    template: "\n      <video #videoEl [height]=\"height\" [width]=\"width\" [(ngModel)]=\"videoObj\">{{alt}}</video>"
                 },] },
     ];
     /** @nocollapse */

@@ -1,13 +1,13 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core'
+import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core'
 import { IVideoElementAttributes } from '../../interfaces/IVideoElementAttributes'
 import { MediaEventsComponent } from '../media-events/media-events.component'
 
 @Component({
   selector: 'video-angulara-component',
   template: `
-      <video #videoEl [height]="height" [width]="width">{{alt}}</video>`
+      <video #videoEl [height]="height" [width]="width" [(ngModel)]="videoObj">{{alt}}</video>`
 })
-export class VideoAngularaComponent extends MediaEventsComponent implements OnInit {
+export class VideoAngularaComponent extends MediaEventsComponent implements OnInit, OnChanges {
   @Input() alt: string
   @Input() autoplay: boolean = false
   @Input() controls: boolean = false
@@ -21,6 +21,7 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
   @Input() srcObject: object = null
   @Input() streaming: boolean
   @Input() width: number = 0
+  videoObj
   @ViewChild('videoEl') private videoEl: ElementRef
 
   ngOnInit () {
@@ -28,6 +29,10 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
     Object.assign(this.video, this.constructVideoElementAttributes())
     this.mediaElement = this.video
     this.eventListeners.canplay.options.runOnce = true
+  }
+
+  ngOnChanges () {
+    console.log(this.videoObj)
   }
 
   get video (): HTMLVideoElement {

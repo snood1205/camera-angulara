@@ -18,6 +18,8 @@ var CameraAngularaComponent = (function () {
             this.streaming = true;
         }
     };
+    CameraAngularaComponent.prototype.takePhoto = function () {
+    };
     CameraAngularaComponent.decorators = [
         { type: Component, args: [{
                     selector: 'camera-angulara-component',
