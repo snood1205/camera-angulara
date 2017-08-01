@@ -105,6 +105,7 @@ export abstract class MediaEventsComponent implements OnInit {
             event.preventDefault()
           }
           value.eventEmitter.emit.apply(this, value.options.arguments)
+          if (value.options.runOnce) return false
         })
       }
     })

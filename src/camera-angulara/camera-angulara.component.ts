@@ -25,9 +25,10 @@ export class CameraAngularaComponent implements OnInit {
       .then((stream) => this.stream = stream)
   }
 
-  resizeOnCanPlay () {
+  resizeOnCanPlay (video) {
     if (!this.streaming) {
-      this.height =
+      this.height = video.videoHeight / (video.videoWidth / this.width)
+      this.streaming = true
     }
   }
 }
