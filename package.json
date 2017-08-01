@@ -1,0 +1,34 @@
+{
+  "name": "camera-angulara",
+  "version": "0.1.0",
+  "description": "A friendly interface for taking pictures in angular and uploading them.",
+  "main": "./dist/camera-angulara.bundle.js",
+  "module": "./dist/camera-angulara.module.js",
+  "jsnext:main": "./dist/camera-angulara.module.js",
+  "types": "./dist/camera-angulara.module.d.ts",
+  "repository": "https://github.com/snood1205/camera-angulara",
+  "author": "Eli Sadoff <snood1205@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "Angular",
+    "Angular 2",
+    "Angular 4",
+    "camera",
+    "webcam"
+  ],
+  "dependencies": {
+    "@angular/common": "^4.3.2",
+    "@angular/compiler": "^4.3.2",
+    "@angular/compiler-cli": "^4.3.2",
+    "@angular/core": "^4.3.2",
+    "@angular/http": "^4.3.2",
+    "@angular/platform-browser": "^4.3.2",
+    "rxjs": "^5.4.2",
+    "typescript": "^2.4.2",
+    "zone.js": "^0.8.16"
+  },
+  "devDependencies": {
+    "tslint": "^5.5.0",
+    "tslint-config-standard": "^6.0.1"
+  }
+}
