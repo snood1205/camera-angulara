@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter, Renderer2 } from '@angular/core';
 var MediaEventsComponent = (function () {
-    function MediaEventsComponent(mediaElement, renderer) {
-        this.mediaElement = mediaElement;
+    function MediaEventsComponent(renderer) {
         this.renderer = renderer;
         this.onAbort = new EventEmitter();
         this.onCanPlay = new EventEmitter();
@@ -108,7 +107,6 @@ var MediaEventsComponent = (function () {
     ];
     /** @nocollapse */
     MediaEventsComponent.ctorParameters = function () { return [
-        { type: HTMLMediaElement, },
         { type: Renderer2, },
     ]; };
     MediaEventsComponent.propDecorators = {
