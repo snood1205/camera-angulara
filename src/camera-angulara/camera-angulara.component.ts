@@ -18,7 +18,6 @@ export class CameraAngularaComponent implements OnInit {
   streaming: boolean = false
 
   constructor (@Inject('Navigator') private navigator: Navigator) {
-
   }
 
   ngOnInit () {
