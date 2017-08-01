@@ -12,6 +12,7 @@ var CameraAngularaComponent = (function () {
             .then(function (stream) { return _this.stream = stream; });
     };
     CameraAngularaComponent.prototype.resizeOnCanPlay = function (video) {
+        console.log(video);
         if (!this.streaming) {
             this.height = video.videoHeight / (video.videoWidth / this.width);
             this.streaming = true;
