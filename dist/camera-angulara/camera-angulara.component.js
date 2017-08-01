@@ -31,9 +31,8 @@ var CameraAngularaComponent = (function () {
     ]; };
     CameraAngularaComponent.propDecorators = {
         'countdown': [{ type: Input },],
-        'canvas': [{ type: Input },],
-        'video': [{ type: Input },],
         'width': [{ type: Input },],
+        'height': [{ type: Input },],
         'imageFormat': [{ type: Input },],
         'captureMessage': [{ type: Input },],
     };

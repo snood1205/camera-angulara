@@ -15,15 +15,15 @@ import { IDimensions } from '../utilities/interfaces/IDimensions'
 })
 export class CameraAngularaComponent implements OnInit {
   @Input() countdown: number
-  @Input() canvas: IDimensions
-  @Input() video: IDimensions
   @Input() width: number = 320
+  @Input() height: number = 0
   @Input() imageFormat: string
   @Input() captureMessage: string
 
   stream: MediaStream
-  height: number = 0
   streaming: boolean = false
+  canvas: IDimensions
+  video: IDimensions
 
   constructor (@Inject('Navigator') private navigator: Navigator) {
   }
