@@ -31,7 +31,6 @@ var VideoAngularaComponent = (function (_super) {
         _super.prototype.ngOnInit.call(this);
         Object.assign(this.video, this.constructVideoElementAttributes());
         this.mediaElement = this.video;
-        this.eventListeners.canplay.options.arguments = [{ height: this.video.videoHeight, width: this.video.videoWidth }];
         this.eventListeners.canplay.options.runOnce = true;
     };
     Object.defineProperty(VideoAngularaComponent.prototype, "video", {

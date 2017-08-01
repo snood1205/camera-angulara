@@ -4,7 +4,7 @@ import { IDimensions } from '../utilities/interfaces/IDimensions'
 @Component({
   selector: 'camera-angulara-component',
   template: `
-      <video-angulara-component *ngIf="stream" [srcObject]="stream" (onCanPlay)="resizeOnCanPlay(dimensions)"
+      <video-angulara-component *ngIf="stream" [srcObject]="stream" (onCanPlay)="streamOnCanPlay()"
                                 [height]="video.height" [width]="video.width"
                                 [alt]="'Video stream is not available.'"></video-angulara-component>
       <button (click)="takePhoto()">Take Photo</button>
@@ -35,9 +35,8 @@ export class CameraAngularaComponent implements OnInit {
       .then((stream) => this.stream = stream)
   }
 
-  resizeOnCanPlay (video) {
+  streamOnCanPlay () {
     if (!this.streaming) {
-      this.height = video.videoHeight / (video.videoWidth / this.width)
       this.streaming = true
     }
   }

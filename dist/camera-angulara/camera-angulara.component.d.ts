@@ -13,5 +13,5 @@ export declare class CameraAngularaComponent implements OnInit {
     video: IDimensions;
     constructor(navigator: Navigator);
     ngOnInit(): void;
-    resizeOnCanPlay(video: any): void;
+    streamOnCanPlay(): void;
 }

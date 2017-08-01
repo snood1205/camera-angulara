@@ -13,16 +13,15 @@ var CameraAngularaComponent = (function () {
         this.navigator.mediaDevices.getUserMedia(({ video: true, audio: false }))
             .then(function (stream) { return _this.stream = stream; });
     };
-    CameraAngularaComponent.prototype.resizeOnCanPlay = function (video) {
+    CameraAngularaComponent.prototype.streamOnCanPlay = function () {
         if (!this.streaming) {
-            this.height = video.videoHeight / (video.videoWidth / this.width);
             this.streaming = true;
         }
     };
     CameraAngularaComponent.decorators = [
         { type: Component, args: [{
                     selector: 'camera-angulara-component',
-                    template: "\n      <video-angulara-component *ngIf=\"stream\" [srcObject]=\"stream\" (onCanPlay)=\"resizeOnCanPlay(dimensions)\"\n                                [height]=\"video.height\" [width]=\"video.width\"\n                                [alt]=\"'Video stream is not available.'\"></video-angulara-component>\n      <button (click)=\"takePhoto()\">Take Photo</button>\n      <canvas [width]=\"canvas.width\" [height]=\"canvas.height\"></canvas>\n      <div class=\"output\">\n          <img alt=\"User's screen capture\">\n      </div>"
+                    template: "\n      <video-angulara-component *ngIf=\"stream\" [srcObject]=\"stream\" (onCanPlay)=\"streamOnCanPlay()\"\n                                [height]=\"video.height\" [width]=\"video.width\"\n                                [alt]=\"'Video stream is not available.'\"></video-angulara-component>\n      <button (click)=\"takePhoto()\">Take Photo</button>\n      <canvas [width]=\"canvas.width\" [height]=\"canvas.height\"></canvas>\n      <div class=\"output\">\n          <img alt=\"User's screen capture\">\n      </div>"
                 },] },
     ];
     /** @nocollapse */

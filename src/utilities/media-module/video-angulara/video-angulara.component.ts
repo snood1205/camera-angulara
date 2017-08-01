@@ -27,7 +27,6 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
     super.ngOnInit()
     Object.assign(this.video, this.constructVideoElementAttributes())
     this.mediaElement = this.video
-    this.eventListeners.canplay.options.arguments = [{height: this.video.videoHeight, width: this.video.videoWidth}]
     this.eventListeners.canplay.options.runOnce = true
   }
 
