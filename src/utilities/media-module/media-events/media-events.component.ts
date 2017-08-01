@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter, OnInit, Renderer2 } from '@angular/core'
-import { Experimental } from '../../decorators/experimental.decorator'
 import { IOutputBindingOptions } from '../../interfaces/IOutputBindingOptions'
 
 @Component({})
@@ -9,7 +8,7 @@ export abstract class MediaEventsComponent implements OnInit {
   @Output() onCanPlayThrough = new EventEmitter()
   @Output() onDurationChange = new EventEmitter()
   @Output() onEmptied = new EventEmitter()
-  @Output() @Experimental() onEncrypted = new EventEmitter()
+  @Output() onEncrypted = new EventEmitter()
   @Output() onEnded = new EventEmitter()
   @Output() onError = new EventEmitter()
   @Output() onInterruptBegin = new EventEmitter()
