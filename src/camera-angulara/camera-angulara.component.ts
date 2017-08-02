@@ -7,7 +7,6 @@ import { ICameraService } from '../utilities/services/ICamera.service'
   template: `
     <video-angulara-component *ngIf="stream" [srcObject]="stream" (onCanPlay)="streamOnCanPlay()"
                               [height]="video.height" [width]="video.width" [(ngModel)]="videoObj"
-                              [service]="service"
                               [alt]="'Video stream is not available.'"></video-angulara-component>
     <button (click)="takePhoto()">Take Photo</button>
     <canvas [width]="canvas.width" [height]="canvas.height"></canvas>
