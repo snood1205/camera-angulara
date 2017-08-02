@@ -88,5 +88,6 @@ export class ${name.pascal}Component extends UserCameraComponent {
   }
 }`, (err) => {if (err) console.error(err)})
   })
-
+  console.log(`${chalk.bold.bgRed.white('Note: ')} This does not mean that everything is complete. You will \
+  still need to manually add 'CameraAngularaModule' to your @NgModule under 'imports'.`)
 }
