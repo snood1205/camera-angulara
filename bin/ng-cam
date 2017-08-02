@@ -51,7 +51,8 @@ if (command === 'generate') {
     }
     name.camel = kebabCase.reverse(name.base)
     name.pascal = `${name.camel.charAt(0).toUpperCase()}${name.camel.substring(1)}`
-    const constructPath = (fileName) => path.join.apply(this, [__dirname].concat(data.directory.split('/'), fileName))
+    const baseDir = __dirname.split('/').slice(0, -1)
+    const constructPath = (fileName) => path.join.apply(this, ['/'].concat(baseDir, data.directory.split('/'), fileName))
     fs.writeFile(constructPath(`${name.kebab}.service.ts`),
       `import { Http } from '@angular/http'
 import { Injectable } from '@angular/core'
@@ -67,7 +68,7 @@ export class ${name.pascal}Service implements ICameraService {
     return this.http.post('${data.url}', {image})
                     .map(data => data.json())
  }
-}`, () => {})
+}`, (err) => {console.error(err)})
     fs.writeFile(constructPath(`${name.kebab}.component.ts`),
       `import { UserCameraComponent } from 'camera-angulara'
 import { Component } from '@angular/core'
@@ -85,7 +86,7 @@ export class ${name.pascal}Component extends UserCameraComponent {
   constructor(protected cameraService: ${name.pascal}Service) {
     super(cameraService)
   }
-}`, () => {})
+}`, (err) => {console.error(err)})
   })
 
 }
