@@ -10,7 +10,7 @@
   "repository": "https://github.com/snood1205/camera-angulara",
   "license": "MIT",
   "scripts": {
-    "prepublishOnly": "npm run update-contrib && npm run update-coc && npm run dist",
+    "prepublishOnly": "npm run dist",
     "postpublish": "git add ./dist && git commit -m 'version(BUMP): upgraded version' && git tag `npm view camera-angulara version` && git push && git push --tags",
     "test": "jasmine",
     "update-contrib": "./node_modules/.bin/weallcontribute -o . && git add CONTRIBUTING.md && git commit -m 'docs(contributing): updated CONTRIBUTING.md'",
