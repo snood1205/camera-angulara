@@ -1,3 +1,3 @@
 export { CameraAngularaModule } from './src/camera-angulara.module';
-export { UserCameraComponent } from './src/user-camera.component';
+export { UserCameraComponent } from './src/utilities/components/user-camera.component';
 //# sourceMappingURL=index.js.map

@@ -13,7 +13,7 @@ var ParentCameraComponent = (function () {
         this.height = 0;
     }
     ParentCameraComponent.decorators = [
-        { type: Component, args: [{},] },
+        { type: Component, args: [{ template: '' },] },
     ];
     /** @nocollapse */
     ParentCameraComponent.ctorParameters = function () { return []; };

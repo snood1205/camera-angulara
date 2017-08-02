@@ -1,4 +1,4 @@
-export declare abstract class ParentCameraComponent {
+export declare class ParentCameraComponent {
     /**
      * The number of seconds you want for the camera to countdown before the picture takes.
      * @type {number}

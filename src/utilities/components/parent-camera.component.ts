@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core'
 
-@Component({})
-export abstract class ParentCameraComponent {
+@Component({template: ''})
+export class ParentCameraComponent {
   /**
    * The number of seconds you want for the camera to countdown before the picture takes.
    * @type {number}
