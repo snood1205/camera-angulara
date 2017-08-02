@@ -97,7 +97,7 @@ export abstract class MediaEventsComponent implements OnInit, DoCheck {
   }
 
   play () {
-    this.mediaElement.play().catch(() => console.error('Media element did not play'))
+    this.mediaElement.play()
   }
 
   private applyEventListeners () {

@@ -7,9 +7,8 @@ import { Component, Inject, EventEmitter, Input, Output } from '@angular/core';
  * @implements {OnInit}
  */
 var CameraAngularaComponent = (function () {
-    function CameraAngularaComponent(navigator, cameraService) {
+    function CameraAngularaComponent(navigator) {
         this.navigator = navigator;
-        this.cameraService = cameraService;
         /**
          * The width of the image in pixels.
          * @type {number}
@@ -65,7 +64,6 @@ var CameraAngularaComponent = (function () {
     /** @nocollapse */
     CameraAngularaComponent.ctorParameters = function () { return [
         { type: Navigator, decorators: [{ type: Inject, args: ['Navigator',] },] },
-        null,
     ]; };
     CameraAngularaComponent.propDecorators = {
         'countdown': [{ type: Input },],
@@ -73,6 +71,7 @@ var CameraAngularaComponent = (function () {
         'height': [{ type: Input },],
         'imageFormat': [{ type: Input },],
         'captureMessage': [{ type: Input },],
+        'cameraService': [{ type: Input },],
         'onPhotoCapture': [{ type: Output },],
     };
     return CameraAngularaComponent;

@@ -53,6 +53,12 @@ export class CameraAngularaComponent implements OnInit {
   @Input() captureMessage: string
 
   /**
+   * The service to be used to upload the image
+   * @type {ICameraService}
+   */
+  @Input() cameraService: ICameraService
+
+  /**
    * An indicator that fires when the picture is taken allowing for a parent component to be
    * able to listen for the image's being taken.
    * @type {EventEmitter<Object>}
@@ -66,7 +72,7 @@ export class CameraAngularaComponent implements OnInit {
   video: IDimensions
   videoObj: object
 
-  constructor (@Inject('Navigator') private navigator: Navigator, private cameraService: ICameraService) {
+  constructor (@Inject('Navigator') private navigator: Navigator) {
   }
 
   ngOnInit () {

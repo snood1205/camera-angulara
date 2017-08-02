@@ -3,7 +3,6 @@ import { IDimensions } from '../utilities/interfaces/IDimensions';
 import { ICameraService } from '../ICamera.service';
 export declare class CameraAngularaComponent implements OnInit {
     private navigator;
-    private cameraService;
     /**
      * The number of seconds you want for the camera to countdown before the picture takes.
      * @type {number}
@@ -30,6 +29,11 @@ export declare class CameraAngularaComponent implements OnInit {
      */
     captureMessage: string;
     /**
+     * The service to be used to upload the image
+     * @type {ICameraService}
+     */
+    cameraService: ICameraService;
+    /**
      * An indicator that fires when the picture is taken allowing for a parent component to be
      * able to listen for the image's being taken.
      * @type {EventEmitter<Object>}
@@ -41,7 +45,7 @@ export declare class CameraAngularaComponent implements OnInit {
     canvas: IDimensions;
     video: IDimensions;
     videoObj: object;
-    constructor(navigator: Navigator, cameraService: ICameraService);
+    constructor(navigator: Navigator);
     ngOnInit(): void;
     /**
      * This is passed as an event listener to the {@code canplay} event on video.
