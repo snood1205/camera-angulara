@@ -86,7 +86,7 @@ var MediaEventsComponent = (function () {
         this.applyEventListeners();
     };
     MediaEventsComponent.prototype.play = function () {
-        this.mediaElement.play();
+        this.mediaElement.play().catch(function () { return console.error('Media element did not play'); });
     };
     MediaEventsComponent.prototype.applyEventListeners = function () {
         var _this = this;
