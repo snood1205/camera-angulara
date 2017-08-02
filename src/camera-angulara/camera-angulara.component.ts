@@ -1,6 +1,6 @@
 import { Component, Inject, EventEmitter, Input, Output, OnInit } from '@angular/core'
 import { IDimensions } from '../utilities/interfaces/IDimensions'
-import { ICameraService } from '../ICamera.service'
+import { ICameraService } from '../utilities/services/ICamera.service'
 
 @Component({
   selector: 'camera-angulara-component',
@@ -54,7 +54,7 @@ export class CameraAngularaComponent implements OnInit {
 
   /**
    * The service to be used to upload the image
-   * @type {ICameraService}
+   * @type {CameraService}
    */
   @Input() cameraService: ICameraService
 

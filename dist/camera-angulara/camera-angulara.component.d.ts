@@ -1,6 +1,6 @@
 import { EventEmitter, OnInit } from '@angular/core';
 import { IDimensions } from '../utilities/interfaces/IDimensions';
-import { ICameraService } from '../ICamera.service';
+import { ICameraService } from '../utilities/services/ICamera.service';
 export declare class CameraAngularaComponent implements OnInit {
     private navigator;
     /**
@@ -30,7 +30,7 @@ export declare class CameraAngularaComponent implements OnInit {
     captureMessage: string;
     /**
      * The service to be used to upload the image
-     * @type {ICameraService}
+     * @type {CameraService}
      */
     cameraService: ICameraService;
     /**
