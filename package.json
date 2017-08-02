@@ -17,6 +17,9 @@
     "update-coc": "weallbehave -o . && git add CODE_OF_CONDUCT.md && git commit -m 'docs(coc): updated CODE_OF_CONDUCT.md'",
     "dist": "./node_modules/.bin/ngc -p ./tsconfig.json"
   },
+  "bin": {
+    "ng-cam": "./bin/ng-cam"
+  },
   "author": {
     "name": "Eli Sadoff",
     "email": "snood1205@gmail.com",
@@ -37,6 +40,11 @@
     "@angular/forms": "^4.3.2",
     "@angular/http": "^4.3.2",
     "@angular/platform-browser": "^4.3.2",
+    "chalk": "^2.0.1",
+    "command-line-commands": "^2.0.1",
+    "fs": "^0.0.1-security",
+    "kebab-case": "^1.0.0",
+    "prompt": "^1.0.0",
     "rxjs": "^5.4.2",
     "typescript": "^2.4.2",
     "zone.js": "^0.8.16"

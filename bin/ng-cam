@@ -1,0 +1,91 @@
+#!/usr/bin/env node
+'use strict'
+process.title = 'camera-angulara'
+const fs = require('fs')
+const commandLineCommands = require('command-line-commands')
+const prompt = require('prompt')
+const chalk = require('chalk')
+const kebabCase = require('kebab-case')
+const path = require('path')
+prompt.message = chalk.green.bgBlack.bold('camera angulara')
+const validCommands = ['generate', null]
+const {command, _} = commandLineCommands(validCommands)
+let confirmed = false
+const schema = {
+  properties: {
+    confirm: {
+      name: 'confirm',
+      description: 'Would you like to generate a component in your application for a camera? [Y/n]',
+      type: 'string',
+      pattern: /^(?:no|yes|)$/i
+    },
+    name: {
+      name: 'component',
+      description: 'What would you like the component to be named (use kebab-case)',
+      type: 'string',
+      pattern: /^[a-z][a-z\-]+[a-z]$/,
+      ask: () => {
+        confirmed = prompt.history('confirm').value.match(/^(?:yes|)$/i)
+        return confirmed
+      }
+    },
+    directory: {
+      name: 'directory',
+      description: 'Enter the directory where you want the component (leave blank for current directory)',
+      type: 'string',
+      ask: confirmed
+    },
+    url: {
+      name: 'url',
+      description: 'Enter the URL to post the image to on your server',
+      type: 'string'
+    }
+  }
+}
+if (command === 'generate') {
+  prompt.start()
+  prompt.get(schema, (_, data) => {
+    const name = {
+      kebab: data.name,
+      base: data.name.endsWith('-component') ? data.name.substring(0, data.name.length - 10) : data.name
+    }
+    name.camel = kebabCase.reverse(name.base)
+    name.pascal = `${name.camel.charAt(0).toUpperCase()}${name.camel.substring(1)}`
+    const constructPath = (fileName) => path.join.apply(this, [__dirname].concat(data.directory.split('/'), fileName))
+    fs.writeFile(constructPath(`${name.kebab}.service.ts`),
+      `import { Http } from '@angular/http'
+import { Injectable } from '@angular/core'
+import { ICameraService } from 'camera-angulara'
+import 'rxjs/add/operator/map'
+
+@Injectable()
+export class ${name.pascal}Service implements ICameraService {
+  constructor(private http: Http) {
+  }
+  
+  upload(image) {
+    return this.http.post('${data.url}', {image})
+                    .map(data => data.json())
+ }
+}`, () => {})
+    fs.writeFile(constructPath(`${name.kebab}.component.ts`),
+      `import { UserCameraComponent } from 'camera-angulara'
+import { Component } from '@angular/core'
+import { ${name.pascal}Service } from './${name.kebab}.service'
+
+@Component({
+  selector: '${name.kebab}',
+  template: \`
+  <camera-angulara-component [height]="height" [width]="width" [countdown]="countdown"
+                             [imageFormat]="imageFormat" [captureMessage]="captureMessage">
+  </camera-angulara-component>
+  \`
+})
+export class ${name.pascal}Component extends UserCameraComponent {
+  constructor(protected cameraService: ${name.pascal}Service) {
+    super(cameraService)
+  }
+}`, () => {})
+  })
+
+}
