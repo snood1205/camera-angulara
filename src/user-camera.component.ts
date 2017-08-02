@@ -2,7 +2,9 @@ import { Component } from '@angular/core'
 import { ParentCameraComponent } from './utilities/components/parent-camera.component'
 import { ICameraService } from './utilities/services/ICamera.service'
 
-@Component({})
+@Component({
+  template: ''
+})
 /**
  * This class should be extended by the user to implement the class they use.
  * It should have a template similar to this:

@@ -25,7 +25,9 @@ var UserCameraComponent = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     UserCameraComponent.decorators = [
-        { type: Component, args: [{},] },
+        { type: Component, args: [{
+                    template: ''
+                },] },
     ];
     /** @nocollapse */
     UserCameraComponent.ctorParameters = function () { return []; };
