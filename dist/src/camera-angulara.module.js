@@ -17,7 +17,8 @@ var CameraAngularaModule = (function () {
                         { provide: 'Navigator', useValue: navigator }
                     ],
                     declarations: [CameraAngularaComponent, UserCameraComponent],
-                    entryComponents: [UserCameraComponent]
+                    entryComponents: [UserCameraComponent],
+                    exports: [UserCameraComponent]
                 },] },
     ];
     /** @nocollapse */

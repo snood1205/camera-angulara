@@ -14,7 +14,8 @@ import { UserCameraComponent } from './user-camera.component'
     {provide: 'Navigator', useValue: navigator}
   ],
   declarations: [CameraAngularaComponent, UserCameraComponent],
-  entryComponents: [UserCameraComponent]
+  entryComponents: [UserCameraComponent],
+  exports: [UserCameraComponent]
 })
 export class CameraAngularaModule {
 }
