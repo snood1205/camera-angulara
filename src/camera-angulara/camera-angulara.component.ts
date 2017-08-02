@@ -1,6 +1,5 @@
 import { Component, Inject, EventEmitter, Input, Output, OnInit } from '@angular/core'
 import { IDimensions } from '../utilities/interfaces/IDimensions'
-import { ParentCameraComponent } from '../utilities/components/parent-camera.component'
 
 @Component({
   selector: 'camera-angulara-component',
@@ -21,13 +20,42 @@ import { ParentCameraComponent } from '../utilities/components/parent-camera.com
  * @author Eli Sadoff <snood1205@gmail.com>
  * @implements {OnInit}
  */
-export class CameraAngularaComponent extends ParentCameraComponent implements OnInit {
+export class CameraAngularaComponent implements OnInit {
+  /**
+   * The number of seconds you want for the camera to countdown before the picture takes.
+   * @type {number}
+   */
+  @Input() countdown: number
+
+  /**
+   * The width of the image in pixels.
+   * @type {number}
+   */
+  @Input() width: number = 320
+
+  /**
+   * The height of the image in pixels.
+   * @type {number}
+   */
+  @Input() height: number = 0
+
+  /**
+   * The desired format of the image (as in JPEG, PNG, etc).
+   * @type {string}
+   */
+  @Input() imageFormat: string
+
+  /**
+   * The message to be displayed upon capture.
+   * @type {string}
+   */
+  @Input() captureMessage: string
   /**
    * An indicator that fires when the picture is taken allowing for a parent component to be
    * able to listen for the image's being taken.
    * @type {EventEmitter<Object>}
    */
-  @Output() onPhotoCapture: EventEmitter<{image, video}> = new EventEmitter<{image, video}>()
+  @Output() onPhotoCapture: EventEmitter<{ image, video }> = new EventEmitter<{ image, video }>()
 
   image: ImageBitmap
   stream: MediaStream
@@ -37,7 +65,6 @@ export class CameraAngularaComponent extends ParentCameraComponent implements On
   videoObj: object
 
   constructor (@Inject('Navigator') private navigator: Navigator) {
-    super()
   }
 
   ngOnInit () {

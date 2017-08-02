@@ -1,15 +1,4 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-import { Component, Inject, EventEmitter, Output } from '@angular/core';
-import { ParentCameraComponent } from '../utilities/components/parent-camera.component';
+import { Component, Inject, EventEmitter, Input, Output } from '@angular/core';
 /**
  * The main component for camera angulara. It has 5 possible inputs and is what
  * the end user should use in their application as 'camera-angulara-component'.
@@ -17,19 +6,26 @@ import { ParentCameraComponent } from '../utilities/components/parent-camera.com
  * @author Eli Sadoff <snood1205@gmail.com>
  * @implements {OnInit}
  */
-var CameraAngularaComponent = (function (_super) {
-    __extends(CameraAngularaComponent, _super);
+var CameraAngularaComponent = (function () {
     function CameraAngularaComponent(navigator) {
-        var _this = _super.call(this) || this;
-        _this.navigator = navigator;
+        this.navigator = navigator;
+        /**
+         * The width of the image in pixels.
+         * @type {number}
+         */
+        this.width = 320;
+        /**
+         * The height of the image in pixels.
+         * @type {number}
+         */
+        this.height = 0;
         /**
          * An indicator that fires when the picture is taken allowing for a parent component to be
          * able to listen for the image's being taken.
          * @type {EventEmitter<Object>}
          */
-        _this.onPhotoCapture = new EventEmitter();
-        _this.streaming = false;
-        return _this;
+        this.onPhotoCapture = new EventEmitter();
+        this.streaming = false;
     }
     CameraAngularaComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -64,9 +60,14 @@ var CameraAngularaComponent = (function (_super) {
         { type: Navigator, decorators: [{ type: Inject, args: ['Navigator',] },] },
     ]; };
     CameraAngularaComponent.propDecorators = {
+        'countdown': [{ type: Input },],
+        'width': [{ type: Input },],
+        'height': [{ type: Input },],
+        'imageFormat': [{ type: Input },],
+        'captureMessage': [{ type: Input },],
         'onPhotoCapture': [{ type: Output },],
     };
     return CameraAngularaComponent;
-}(ParentCameraComponent));
+}());
 export { CameraAngularaComponent };
 //# sourceMappingURL=camera-angulara.component.js.map

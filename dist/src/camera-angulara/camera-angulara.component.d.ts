@@ -1,8 +1,32 @@
 import { EventEmitter, OnInit } from '@angular/core';
 import { IDimensions } from '../utilities/interfaces/IDimensions';
-import { ParentCameraComponent } from '../utilities/components/parent-camera.component';
-export declare class CameraAngularaComponent extends ParentCameraComponent implements OnInit {
+export declare class CameraAngularaComponent implements OnInit {
     private navigator;
+    /**
+     * The number of seconds you want for the camera to countdown before the picture takes.
+     * @type {number}
+     */
+    countdown: number;
+    /**
+     * The width of the image in pixels.
+     * @type {number}
+     */
+    width: number;
+    /**
+     * The height of the image in pixels.
+     * @type {number}
+     */
+    height: number;
+    /**
+     * The desired format of the image (as in JPEG, PNG, etc).
+     * @type {string}
+     */
+    imageFormat: string;
+    /**
+     * The message to be displayed upon capture.
+     * @type {string}
+     */
+    captureMessage: string;
     /**
      * An indicator that fires when the picture is taken allowing for a parent component to be
      * able to listen for the image's being taken.
