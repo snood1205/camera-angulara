@@ -6,7 +6,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms'
 @Component({
   selector: 'video-angulara-component',
   template: `
-    <video #videoEl [height]="height" [width]="width" [(ngModel)]="videoObj">{{alt}}</video>`,
+    <video #videoEl [height]="height" [width]="width">{{alt}}</video>`,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -123,12 +123,12 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
 
   @Input()
   get ngModel () {
-    return this.videoObj
+    return this.srcObject
   }
 
-  set ngModel (videoObj) {
-    this.videoObj = videoObj
-    this.ngModelChange.emit(this.videoObj)
+  set ngModel (srcObject) {
+    this.srcObject = srcObject
+    this.ngModelChange.emit(this.srcObject)
   }
 
   get video (): HTMLVideoElement {
