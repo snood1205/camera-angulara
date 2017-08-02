@@ -1,7 +1,7 @@
 {
   "name": "camera-angulara",
-  "version": "0.1.0-ALPHA",
-  "description": "PRERELEASE NOT YET READY FOR USE - A friendly interface for taking pictures in angular and uploading them.",
+  "version": "0.1.0",
+  "description": "A friendly interface for taking pictures in angular and uploading them.",
   "outDir": "./dist",
   "main": "./dist/index.bundle.js",
   "module": "./dist/index.js",
