@@ -2,5 +2,4 @@ import { ParentCameraComponent } from './utilities/components/parent-camera.comp
 import { ICameraService } from './utilities/services/ICamera.service';
 export declare class UserCameraComponent extends ParentCameraComponent {
     protected cameraService: ICameraService;
-    constructor(cameraService: ICameraService);
 }

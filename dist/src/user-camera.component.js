@@ -21,18 +21,14 @@ import { ParentCameraComponent } from './utilities/components/parent-camera.comp
  */
 var UserCameraComponent = (function (_super) {
     __extends(UserCameraComponent, _super);
-    function UserCameraComponent(cameraService) {
-        var _this = _super.call(this) || this;
-        _this.cameraService = cameraService;
-        return _this;
+    function UserCameraComponent() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     UserCameraComponent.decorators = [
         { type: Component, args: [{},] },
     ];
     /** @nocollapse */
-    UserCameraComponent.ctorParameters = function () { return [
-        null,
-    ]; };
+    UserCameraComponent.ctorParameters = function () { return []; };
     return UserCameraComponent;
 }(ParentCameraComponent));
 export { UserCameraComponent };
