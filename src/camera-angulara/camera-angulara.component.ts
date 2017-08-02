@@ -1,6 +1,6 @@
 import { Component, Inject, EventEmitter, Input, Output, OnInit } from '@angular/core'
 import { IDimensions } from '../utilities/interfaces/IDimensions'
-import { ICameraService } from '../utilities/services/ICamera.service'
+import { ParentCameraComponent } from '../utilities/components/parent-camera.component'
 
 @Component({
   selector: 'camera-angulara-component',
@@ -21,49 +21,13 @@ import { ICameraService } from '../utilities/services/ICamera.service'
  * @author Eli Sadoff <snood1205@gmail.com>
  * @implements {OnInit}
  */
-export class CameraAngularaComponent implements OnInit {
-  /**
-   * The number of seconds you want for the camera to countdown before the picture takes.
-   * @type {number}
-   */
-  @Input() countdown: number
-
-  /**
-   * The width of the image in pixels.
-   * @type {number}
-   */
-  @Input() width: number = 320
-
-  /**
-   * The height of the image in pixels.
-   * @type {number}
-   */
-  @Input() height: number = 0
-
-  /**
-   * The desired format of the image (as in JPEG, PNG, etc).
-   * @type {string}
-   */
-  @Input() imageFormat: string
-
-  /**
-   * The message to be displayed upon capture.
-   * @type {string}
-   */
-  @Input() captureMessage: string
-
-  /**
-   * The service used to upload the image
-   * @type {ICameraService}
-   */
-  @Input() service: ICameraService
-
+export class CameraAngularaComponent extends ParentCameraComponent implements OnInit {
   /**
    * An indicator that fires when the picture is taken allowing for a parent component to be
    * able to listen for the image's being taken.
    * @type {EventEmitter<Object>}
    */
-  @Output() onPhotoCapture: EventEmitter<object> = new EventEmitter<object>()
+  @Output() onPhotoCapture: EventEmitter<{image, video}> = new EventEmitter<{image, video}>()
 
   image: ImageBitmap
   stream: MediaStream
@@ -73,6 +37,7 @@ export class CameraAngularaComponent implements OnInit {
   videoObj: object
 
   constructor (@Inject('Navigator') private navigator: Navigator) {
+    super()
   }
 
   ngOnInit () {
@@ -96,12 +61,6 @@ export class CameraAngularaComponent implements OnInit {
    * The method called upon the button click to take a picture.
    */
   takePhoto () {
-    this.service.upload(this.videoObj).subscribe(
-      _ => {
-        this.onPhotoCapture.emit(this.image)
-        this.image = null
-      }
-      // TODO: Add error handling
-    )
+    this.onPhotoCapture.emit({video: this.videoObj, image: this.image})
   }
 }
