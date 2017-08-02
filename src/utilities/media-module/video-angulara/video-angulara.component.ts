@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output,
 import { IVideoElementAttributes } from '../../interfaces/IVideoElementAttributes'
 import { MediaEventsComponent } from '../media-events/media-events.component'
 import { NG_VALUE_ACCESSOR } from '@angular/forms'
+import { ICameraService } from '../../services/ICamera.service'
 
 @Component({
   selector: 'video-angulara-component',
@@ -77,6 +78,12 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
    * @type {string}
    */
   @Input() poster: string = ''
+
+  /**
+   * The service used to upload the image.
+   * @type {ICameraService}
+   */
+  @Input() service: ICameraService
 
   /**
    * The source URL for the video (default: {@code ''})
