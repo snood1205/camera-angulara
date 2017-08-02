@@ -80,12 +80,6 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
   @Input() poster: string = ''
 
   /**
-   * The service used to upload the image.
-   * @type {ICameraService}
-   */
-  @Input() service: ICameraService
-
-  /**
    * The source URL for the video (default: {@code ''})
    * @type {string}
    */

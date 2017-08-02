@@ -7,6 +7,7 @@ import { ICameraService } from '../utilities/services/ICamera.service'
   template: `
     <video-angulara-component *ngIf="stream" [srcObject]="stream" (onCanPlay)="streamOnCanPlay()"
                               [height]="video.height" [width]="video.width" [(ngModel)]="videoObj"
+                              [service]="service"
                               [alt]="'Video stream is not available.'"></video-angulara-component>
     <button (click)="takePhoto()">Take Photo</button>
     <canvas [width]="canvas.width" [height]="canvas.height"></canvas>
@@ -53,10 +54,10 @@ export class CameraAngularaComponent implements OnInit {
   @Input() captureMessage: string
 
   /**
-   * The service to be used to upload the image
-   * @type {CameraService}
+   * The service used to upload the image
+   * @type {ICameraService}
    */
-  @Input() cameraService: ICameraService
+  @Input() service: ICameraService
 
   /**
    * An indicator that fires when the picture is taken allowing for a parent component to be
@@ -96,7 +97,7 @@ export class CameraAngularaComponent implements OnInit {
    * The method called upon the button click to take a picture.
    */
   takePhoto () {
-    this.cameraService.upload(this.videoObj).subscribe(
+    this.service.upload(this.videoObj).subscribe(
       _ => {
         this.onPhotoCapture.emit(this.image)
         this.image = null

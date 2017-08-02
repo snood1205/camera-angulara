@@ -48,7 +48,7 @@ var CameraAngularaComponent = (function () {
      */
     CameraAngularaComponent.prototype.takePhoto = function () {
         var _this = this;
-        this.cameraService.upload(this.videoObj).subscribe(function (_) {
+        this.service.upload(this.videoObj).subscribe(function (_) {
             _this.onPhotoCapture.emit(_this.image);
             _this.image = null;
         }
@@ -58,7 +58,7 @@ var CameraAngularaComponent = (function () {
     CameraAngularaComponent.decorators = [
         { type: Component, args: [{
                     selector: 'camera-angulara-component',
-                    template: "\n    <video-angulara-component *ngIf=\"stream\" [srcObject]=\"stream\" (onCanPlay)=\"streamOnCanPlay()\"\n                              [height]=\"video.height\" [width]=\"video.width\" [(ngModel)]=\"videoObj\"\n                              [alt]=\"'Video stream is not available.'\"></video-angulara-component>\n    <button (click)=\"takePhoto()\">Take Photo</button>\n    <canvas [width]=\"canvas.width\" [height]=\"canvas.height\"></canvas>\n    <div class=\"output\">\n      <img alt=\"User's screen capture\">\n    </div>"
+                    template: "\n    <video-angulara-component *ngIf=\"stream\" [srcObject]=\"stream\" (onCanPlay)=\"streamOnCanPlay()\"\n                              [height]=\"video.height\" [width]=\"video.width\" [(ngModel)]=\"videoObj\"\n                              [service]=\"service\"\n                              [alt]=\"'Video stream is not available.'\"></video-angulara-component>\n    <button (click)=\"takePhoto()\">Take Photo</button>\n    <canvas [width]=\"canvas.width\" [height]=\"canvas.height\"></canvas>\n    <div class=\"output\">\n      <img alt=\"User's screen capture\">\n    </div>"
                 },] },
     ];
     /** @nocollapse */
@@ -71,7 +71,7 @@ var CameraAngularaComponent = (function () {
         'height': [{ type: Input },],
         'imageFormat': [{ type: Input },],
         'captureMessage': [{ type: Input },],
-        'cameraService': [{ type: Input },],
+        'service': [{ type: Input },],
         'onPhotoCapture': [{ type: Output },],
     };
     return CameraAngularaComponent;

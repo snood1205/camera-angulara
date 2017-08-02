@@ -29,10 +29,10 @@ export declare class CameraAngularaComponent implements OnInit {
      */
     captureMessage: string;
     /**
-     * The service to be used to upload the image
-     * @type {CameraService}
+     * The service used to upload the image
+     * @type {ICameraService}
      */
-    cameraService: ICameraService;
+    service: ICameraService;
     /**
      * An indicator that fires when the picture is taken allowing for a parent component to be
      * able to listen for the image's being taken.

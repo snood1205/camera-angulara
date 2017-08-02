@@ -179,7 +179,6 @@ var VideoAngularaComponent = (function (_super) {
         'muted': [{ type: Input },],
         'preload': [{ type: Input },],
         'poster': [{ type: Input },],
-        'service': [{ type: Input },],
         'src': [{ type: Input },],
         'srcObject': [{ type: Input },],
         'streaming': [{ type: Input },],

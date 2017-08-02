@@ -1,6 +1,5 @@
 import { EventEmitter, OnInit } from '@angular/core';
 import { MediaEventsComponent } from '../media-events/media-events.component';
-import { ICameraService } from '../../services/ICamera.service';
 export declare class VideoAngularaComponent extends MediaEventsComponent implements OnInit {
     /**
      * The alt string to display when the video is not able to display.
@@ -48,11 +47,6 @@ export declare class VideoAngularaComponent extends MediaEventsComponent impleme
      * @type {string}
      */
     poster: string;
-    /**
-     * The service used to upload the image.
-     * @type {ICameraService}
-     */
-    service: ICameraService;
     /**
      * The source URL for the video (default: {@code ''})
      * @type {string}
