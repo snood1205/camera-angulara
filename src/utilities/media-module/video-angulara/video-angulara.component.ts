@@ -1,4 +1,4 @@
-import { Component, ElementRef, forwardRef, Input, OnInit, ViewChild } from '@angular/core'
+import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from '@angular/core'
 import { IVideoElementAttributes } from '../../interfaces/IVideoElementAttributes'
 import { MediaEventsComponent } from '../media-events/media-events.component'
 import { NG_VALUE_ACCESSOR } from '@angular/forms'
@@ -102,6 +102,8 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
    */
   @Input() width: number = 0
 
+  @Output() ngModelChange = new EventEmitter()
+
   videoObj
   onChange: (_) => void
   onTouched: () => void
@@ -117,6 +119,16 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
   writeValue (value) {
     this.value = value
     this.onChange(value)
+  }
+
+  @Input()
+  get ngModel () {
+    return this.videoObj
+  }
+
+  set ngModel (videoObj) {
+    this.videoObj = videoObj
+    this.ngModelChange.emit(this.videoObj)
   }
 
   get video (): HTMLVideoElement {
