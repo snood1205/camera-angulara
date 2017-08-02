@@ -35,7 +35,7 @@ If you have a question about this project, how to use it, or just need clarifica
 
 * Open an Issue at https://github.com/snood1205/camera-angulara/issues
 * Provide as much context as you can about what you're running into.
-* Provide project and platform versions (nodejs, yarn, etc), depending on what seems relevant. If not, please be ready to provide that information if maintainers ask for it.
+* Provide project and platform versions (nodejs, npm, etc), depending on what seems relevant. If not, please be ready to provide that information if maintainers ask for it.
 
 Once it's filed:
 
@@ -49,7 +49,7 @@ If you run into an error or bug with the project:
 
 * Open an Issue at https://github.com/snood1205/camera-angulara/issues
 * Include *reproduction steps* that someone else can follow to recreate the bug or error on their own.
-* Provide project and platform versions (nodejs, yarn, etc), depending on what seems relevant. If not, please be ready to provide that information if maintainers ask for it.
+* Provide project and platform versions (nodejs, npm, etc), depending on what seems relevant. If not, please be ready to provide that information if maintainers ask for it.
 
 Once it's filed:
 
@@ -88,8 +88,8 @@ If you want to go the usual route and run the project locally, though:
 
 Then in your terminal:
 * `cd path/to/your/clone`
-* `yarn install`
-* `yarn test`
+* `npm install`
+* `npm test`
 
 And you should be ready to go!
 
