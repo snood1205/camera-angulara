@@ -84,6 +84,7 @@ import { ${name.pascal}Service } from './${name.kebab}.service'
 })
 export class ${name.pascal}Component extends UserCameraComponent {
   constructor(cameraService: ${name.pascal}Service) {
+    super()
     this.cameraService = cameraService
   }
 }`, (err) => {if (err) console.error(err)})
