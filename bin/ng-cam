@@ -8,9 +8,10 @@ const prompt = require('prompt')
 const chalk = require('chalk')
 const kebabCase = require('kebab-case')
 const path = require('path')
+// noinspection Annotator
 prompt.message = chalk.green.bgBlack.bold('camera angulara')
 const validCommands = ['generate', null]
-const {command, _} = commandLineCommands(validCommands)
+const command = commandLineCommands(validCommands).command
 let confirmed = false
 const schema = {
   properties: {
@@ -91,6 +92,7 @@ export class ${name.pascal}Component extends UserCameraComponent {
     this.cameraService = cameraService
   }
 }`, (err) => { if (err) { console.error(err) } })
+    // noinspection Annotator
     console.log(`${chalk.bold.bgRed.white('Note: ')} This does not mean that everything is complete. You will\
   still need to manually add 'CameraAngularaModule' to your @NgModule under 'imports'.`)
   })

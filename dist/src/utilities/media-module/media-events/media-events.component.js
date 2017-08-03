@@ -94,19 +94,14 @@ var MediaEventsComponent = (function () {
         var key;
         for (key in this.eventListeners) {
             value = this.eventListeners[key];
-            if (this.eventListeners.hasOwnProperty(key)) {
-                if (this.eventListeners.hasOwnProperty(key)) {
-                    if (value.options.skip) {
-                        continue;
+            if (this.eventListeners.hasOwnProperty(key) && !value.options.skip) {
+                this.eventListeners[key].listener = this.renderer.listen(this.mediaElement, key, function (event) {
+                    if (value.options.preventDefault) {
+                        event.preventDefault();
                     }
-                    this.eventListeners[key].listener = this.renderer.listen(this.mediaElement, key, function (event) {
-                        if (value.options.preventDefault) {
-                            event.preventDefault();
-                        }
-                        value.eventEmitter.emit.apply(_this, value.options.arguments);
-                        return !value.options.runOnce;
-                    });
-                }
+                    value.eventEmitter.emit.apply(_this, value.options.arguments);
+                    return !value.options.runOnce;
+                });
             }
         }
     };
