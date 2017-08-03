@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 'use strict'
+const process = require('process')
 process.title = 'camera-angulara'
 const fs = require('fs')
 const commandLineCommands = require('command-line-commands')
@@ -23,7 +24,7 @@ const schema = {
       name: 'component',
       description: 'What would you like the component to be named (use kebab-case)',
       type: 'string',
-      pattern: /^[a-z][a-z\-]+[a-z]$/,
+      pattern: /^[a-z][a-z-]+[a-z]$/,
       ask: () => {
         confirmed = prompt.history('confirm').value.match(/^(?:yes|)$/i)
         return confirmed
@@ -45,14 +46,16 @@ const schema = {
 if (command === 'generate') {
   prompt.start()
   prompt.get(schema, (_, data) => {
+    let baseDir
+    let constructPath
     const name = {
       kebab: data.name,
       base: data.name.endsWith('-component') ? data.name.substring(0, data.name.length - 10) : data.name
     }
     name.camel = kebabCase.reverse(name.base)
     name.pascal = `${name.camel.charAt(0).toUpperCase()}${name.camel.substring(1)}`
-    const baseDir = process.cwd()
-    const constructPath = (fileName) => path.join.apply(this, ['/'].concat(baseDir, data.directory.split('/'), fileName))
+    baseDir = process.cwd()
+    constructPath = (fileName) => path.join.apply(this, ['/'].concat(baseDir, data.directory.split('/'), fileName))
     fs.writeFile(constructPath(`${name.kebab}.service.ts`),
       `import { Http } from '@angular/http'
 import { Injectable } from '@angular/core'
@@ -68,7 +71,7 @@ export class ${name.pascal}Service implements ICameraService {
     return this.http.post('${data.url}', {image})
                     .map(data => data.json())
  }
-}`, (err) => {if (err) console.error(err)})
+}`, (err) => { if (err) { console.error(err) } })
     fs.writeFile(constructPath(`${name.kebab}.component.ts`),
       `import { UserCameraComponent } from 'camera-angulara'
 import { Component } from '@angular/core'
@@ -87,7 +90,7 @@ export class ${name.pascal}Component extends UserCameraComponent {
     super()
     this.cameraService = cameraService
   }
-}`, (err) => {if (err) console.error(err)})
+}`, (err) => { if (err) { console.error(err) } })
     console.log(`${chalk.bold.bgRed.white('Note: ')} This does not mean that everything is complete. You will\
   still need to manually add 'CameraAngularaModule' to your @NgModule under 'imports'.`)
   })

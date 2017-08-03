@@ -32,7 +32,7 @@ var CameraAngularaComponent = (function () {
         this.video = { height: this.height, width: this.width };
         this.canvas = { height: this.height, width: this.width };
         this.navigator.mediaDevices.getUserMedia(({ video: true, audio: false }))
-            .then(function (stream) { return _this.stream = stream; });
+            .then(function (stream) { _this.stream = stream; });
     };
     /**
      * This is passed as an event listener to the {@code canplay} event on video.

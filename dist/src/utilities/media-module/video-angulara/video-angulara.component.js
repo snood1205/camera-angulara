@@ -109,10 +109,7 @@ var VideoAngularaComponent = (function (_super) {
     });
     Object.defineProperty(VideoAngularaComponent.prototype, "video", {
         get: function () {
-            if (this.videoEl == null) {
-                return null;
-            }
-            return this.videoEl.nativeElement;
+            return this.videoEl == null ? null : this.videoEl.nativeElement;
         },
         set: function (video) {
             this.videoEl.nativeElement = video;

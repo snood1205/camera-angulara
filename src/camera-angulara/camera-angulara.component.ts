@@ -71,7 +71,7 @@ export class CameraAngularaComponent implements OnInit {
     this.video = {height: this.height, width: this.width}
     this.canvas = {height: this.height, width: this.width}
     this.navigator.mediaDevices.getUserMedia(({video: true, audio: false}))
-      .then((stream) => this.stream = stream)
+      .then((stream) => { this.stream = stream })
   }
 
   /**

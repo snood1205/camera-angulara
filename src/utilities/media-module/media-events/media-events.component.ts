@@ -101,18 +101,24 @@ export abstract class MediaEventsComponent implements OnInit, DoCheck {
   }
 
   private applyEventListeners () {
-    Object.keys(this.eventListeners).forEach(key => {
-      const value = this.eventListeners[key]
+    let value
+    let key
+    for (key in this.eventListeners) {
+      value = this.eventListeners[key]
       if (this.eventListeners.hasOwnProperty(key)) {
-        if (value.options.skip) return
-        this.eventListeners[key].listener = this.renderer.listen(this.mediaElement, key, (event) => {
-          if (value.options.preventDefault) {
-            event.preventDefault()
+        if (this.eventListeners.hasOwnProperty(key)) {
+          if (value.options.skip) {
+            continue
           }
-          value.eventEmitter.emit.apply(this, value.options.arguments)
-          if (value.options.runOnce) return false
-        })
+          this.eventListeners[key].listener = this.renderer.listen(this.mediaElement, key, (event) => {
+            if (value.options.preventDefault) {
+              event.preventDefault()
+            }
+            value.eventEmitter.emit.apply(this, value.options.arguments)
+            return !value.options.runOnce
+          })
+        }
       }
-    })
+    }
   }
 }

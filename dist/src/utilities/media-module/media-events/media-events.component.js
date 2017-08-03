@@ -90,21 +90,25 @@ var MediaEventsComponent = (function () {
     };
     MediaEventsComponent.prototype.applyEventListeners = function () {
         var _this = this;
-        Object.keys(this.eventListeners).forEach(function (key) {
-            var value = _this.eventListeners[key];
-            if (_this.eventListeners.hasOwnProperty(key)) {
-                if (value.options.skip)
-                    return;
-                _this.eventListeners[key].listener = _this.renderer.listen(_this.mediaElement, key, function (event) {
-                    if (value.options.preventDefault) {
-                        event.preventDefault();
+        var value;
+        var key;
+        for (key in this.eventListeners) {
+            value = this.eventListeners[key];
+            if (this.eventListeners.hasOwnProperty(key)) {
+                if (this.eventListeners.hasOwnProperty(key)) {
+                    if (value.options.skip) {
+                        continue;
                     }
-                    value.eventEmitter.emit.apply(_this, value.options.arguments);
-                    if (value.options.runOnce)
-                        return false;
-                });
+                    this.eventListeners[key].listener = this.renderer.listen(this.mediaElement, key, function (event) {
+                        if (value.options.preventDefault) {
+                            event.preventDefault();
+                        }
+                        value.eventEmitter.emit.apply(_this, value.options.arguments);
+                        return !value.options.runOnce;
+                    });
+                }
             }
-        });
+        }
     };
     MediaEventsComponent.decorators = [
         { type: Component, args: [{},] },

@@ -2,7 +2,6 @@ import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output,
 import { IVideoElementAttributes } from '../../interfaces/IVideoElementAttributes'
 import { MediaEventsComponent } from '../media-events/media-events.component'
 import { NG_VALUE_ACCESSOR } from '@angular/forms'
-import { ICameraService } from '../../services/ICamera.service'
 
 @Component({
   selector: 'video-angulara-component',
@@ -133,10 +132,7 @@ export class VideoAngularaComponent extends MediaEventsComponent implements OnIn
   }
 
   get video (): HTMLVideoElement {
-    if (this.videoEl == null) {
-      return null
-    }
-    return this.videoEl.nativeElement
+    return this.videoEl == null ? null : this.videoEl.nativeElement
   }
 
   set video (video: HTMLVideoElement) {
