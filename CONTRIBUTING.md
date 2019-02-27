@@ -33,7 +33,7 @@ The [Project Team](#join-the-project-team) looks forward to your contributions. 
 
 If you have a question about this project, how to use it, or just need clarification about something:
 
-* Open an Issue at https://github.com/snood1205/camera-angulara/issues
+* Open an Issue at https://gitlab.com/snood1205/camera-angulara/issues
 * Provide as much context as you can about what you're running into.
 * Provide project and platform versions (nodejs, npm, etc), depending on what seems relevant. If not, please be ready to provide that information if maintainers ask for it.
 
@@ -47,7 +47,7 @@ Once it's filed:
 
 If you run into an error or bug with the project:
 
-* Open an Issue at https://github.com/snood1205/camera-angulara/issues
+* Open an Issue at https://gitlab.com/snood1205/camera-angulara/issues
 * Include *reproduction steps* that someone else can follow to recreate the bug or error on their own.
 * Provide project and platform versions (nodejs, npm, etc), depending on what seems relevant. If not, please be ready to provide that information if maintainers ask for it.
 
@@ -63,7 +63,7 @@ Once it's filed:
 
 If the project doesn't do something you need or want it to do:
 
-* Open an Issue at https://github.com/snood1205/camera-angulara/issues
+* Open an Issue at https://gitlab.com/snood1205/camera-angulara/issues
 * Provide as much context as you can about what you're running into.
 * Please try and be clear about why existing features and alternatives would not work for you.
 
@@ -77,14 +77,14 @@ Note: The team is unlikely to be able to accept every single feature request tha
 
 ## Project Setup
 
-So you wanna contribute some code! That's great! This project uses GitHub Pull Requests to manage contributions, so [read up on how to fork a GitHub project and file a PR](https://guides.github.com/activities/forking) if you've never done it before.
+So you wanna contribute some code! That's great! This project uses GitLab Pull Requests to manage contributions, so [read up on how to fork a GitLab project and file a PR](https://guides.gitlab.com/activities/forking) if you've never done it before.
 
-If this seems like a lot or you aren't able to do all this setup, you might also be able to [edit the files directly](https://help.github.com/articles/editing-files-in-another-user-s-repository/) without having to do any of this setup. Yes, [even code](#contribute-code).
+If this seems like a lot or you aren't able to do all this setup, you might also be able to [edit the files directly](https://help.gitlab.com/articles/editing-files-in-another-user-s-repository/) without having to do any of this setup. Yes, [even code](#contribute-code).
 
 If you want to go the usual route and run the project locally, though:
 
 * [Install Node.js](https://nodejs.org/en/download/)
-* [Fork the project](https://guides.github.com/activities/forking/#fork)
+* [Fork the project](https://guides.gitlab.com/activities/forking/#fork)
 
 Then in your terminal:
 * `cd path/to/your/clone`
@@ -106,13 +106,13 @@ To contribute documentation:
 * Make sure your changes are formatted correctly and consistently with the rest of the documentation.
 * Re-read what you wrote, and run a spellchecker on it to make sure you didn't miss anything.
 * In your commit message(s), begin the first line with `docs: `. For example: `docs: Adding a doc contrib section to CONTRIBUTING.md`.
-* Write clear, concise commit message(s) using [conventional-changelog format](https://github.com/conventional-changelog/conventional-changelog-angular/blob/master/convention.md). Documentation commits should use `docs(<component>): <message>`.
-* Go to https://github.com/snood1205/camera-angulara/pulls and open a new pull request with your changes.
+* Write clear, concise commit message(s) using [conventional-changelog format](https://gitlab.com/conventional-changelog/conventional-changelog-angular/blob/master/convention.md). Documentation commits should use `docs(<component>): <message>`.
+* Go to https://gitlab.com/snood1205/camera-angulara/pulls and open a new pull request with your changes.
 * If your PR is connected to an open issue, add a line in your PR's description that says `Fixes: #123`, where `#123` is the number of the issue you're fixing.
 
 Once you've filed the PR:
 
-* One or more maintainers will use GitHub's review feature to review your PR.
+* One or more maintainers will use GitLab's review feature to review your PR.
 * If the maintainer asks for any changes, edit your changes, push, and ask for another review.
 * If the maintainer decides to pass on your PR, they will thank you for the contribution and explain why they won't be accepting the changes. That's ok! We still really appreciate you taking the time to do it, and we don't take that lightly. 💚
 * If your PR gets accepted, it will be marked as such, and merged into the `latest` branch soon after. Your contribution will be distributed to the masses next time the maintainers [tag a release](#tag-a-release)
@@ -131,15 +131,15 @@ To contribute code:
 * Make any necessary changes to the source code.
 * Include any [additional documentation](#contribute-documentation) the changes might need.
 * Write tests that verify that your contribution works as expected.
-* Write clear, concise commit message(s) using [conventional-changelog format](https://github.com/conventional-changelog/conventional-changelog-angular/blob/master/convention.md).
+* Write clear, concise commit message(s) using [conventional-changelog format](https://gitlab.com/conventional-changelog/conventional-changelog-angular/blob/master/convention.md).
 * Dependency updates, additions, or removals must be in individual commits, and the message must use the format: `<prefix>(deps): PKG@VERSION`, where `<prefix>` is any of the usual `conventional-changelog` prefixes, at your discretion.
-* Go to https://github.com/snood1205/camera-angulara/pulls and open a new pull request with your changes.
+* Go to https://gitlab.com/snood1205/camera-angulara/pulls and open a new pull request with your changes.
 * If your PR is connected to an open issue, add a line in your PR's description that says `Fixes: #123`, where `#123` is the number of the issue you're fixing.
 
 Once you've filed the PR:
 
 * Barring special circumstances, maintainers will not review PRs until all checks pass (Travis, AppVeyor, etc).
-* One or more maintainers will use GitHub's review feature to review your PR.
+* One or more maintainers will use GitLab's review feature to review your PR.
 * If the maintainer asks for any changes, edit your changes, push, and ask for another review. Additional tags (such as `needs-tests`) will be added depending on the review.
 * If the maintainer decides to pass on your PR, they will thank you for the contribution and explain why they won't be accepting the changes. That's ok! We still really appreciate you taking the time to do it, and we don't take that lightly. 💚
 * If your PR gets accepted, it will be marked as such, and merged into the `latest` branch soon after. Your contribution will be distributed to the masses next time the maintainers [tag a release](#tag-a-release)
@@ -154,7 +154,7 @@ Sometimes, the `support` label will be added to things that turn out to actually
 
 In order to help other folks out with their questions:
 
-* Go to the issue tracker and [filter open issues by the `support` label](https://github.com/snood1205/camera-angulara/issues?q=is%3Aopen+is%3Aissue+label%3Asupport).
+* Go to the issue tracker and [filter open issues by the `support` label](https://gitlab.com/snood1205/camera-angulara/issues?q=is%3Aopen+is%3Aissue+label%3Asupport).
 * Read through the list until you find something that you're familiar enough with to give an answer to.
 * Respond to the issue with whatever details are needed to clarify the question, or get more details about what's going on.
 * Once the discussion wraps up and things are clarified, either close the issue, or ask the original issue filer (or a maintainer) to close it for you.
@@ -171,7 +171,7 @@ Some notes on picking up support issues:
 
 One of the most important tasks in handling issues is labeling them usefully and accurately. All other tasks involving issues ultimately rely on the issue being classified in such a way that relevant parties looking to do their own tasks can find them quickly and easily.
 
-In order to label issues, [open up the list of unlabeled issues](https://github.com/snood1205/camera-angulara/issues?q=is%3Aopen+is%3Aissue+no%3Alabel) and, **from newest to oldest**, read through each one and apply issue labels according to the table below. If you're unsure about what label to apply, skip the issue and try the next one: don't feel obligated to label each and every issue yourself!
+In order to label issues, [open up the list of unlabeled issues](https://gitlab.com/snood1205/camera-angulara/issues?q=is%3Aopen+is%3Aissue+no%3Alabel) and, **from newest to oldest**, read through each one and apply issue labels according to the table below. If you're unsure about what label to apply, skip the issue and try the next one: don't feel obligated to label each and every issue yourself!
 
 Label | Apply When | Notes
 --- | --- | ---
@@ -206,7 +206,7 @@ To clean up issues and PRs:
   * not marked as `starter` or `help wanted` (these might stick around for a while, in general, as they're intended to be available)
   * no explicit messages in the comments asking for it to be left open
   * does not belong to a milestone
-* Leave a message when closing saying "Cleaning up stale issue. Please reopen or ping us if and when you're ready to resume this. See https://github.com/snood1205/camera-angulara/blob/latest/CONTRIBUTING.md#clean-up-issues-and-prs for more details."
+* Leave a message when closing saying "Cleaning up stale issue. Please reopen or ping us if and when you're ready to resume this. See https://gitlab.com/snood1205/camera-angulara/blob/latest/CONTRIBUTING.md#clean-up-issues-and-prs for more details."
 
 ## Review Pull Requests
 
@@ -214,7 +214,7 @@ To clean up issues and PRs:
 
 While anyone can comment on a PR, add feedback, etc, PRs are only *approved* by team members with Issue Tracker or higher permissions.
 
-PR reviews use [GitHub's own review feature](https://help.github.com/articles/about-pull-request-reviews/), which manages comments, approval, and review iteration.
+PR reviews use [GitLab's own review feature](https://help.gitlab.com/articles/about-pull-request-reviews/), which manages comments, approval, and review iteration.
 
 Some notes:
 

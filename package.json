@@ -7,7 +7,7 @@
   "module": "./dist/index.js",
   "jsnext:main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "repository": "https://github.com/snood1205/camera-angulara",
+  "repository": "https://gitlab.com/snood1205/camera-angulara",
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "npm run dist",
@@ -23,7 +23,7 @@
   "author": {
     "name": "Eli Sadoff",
     "email": "snood1205@gmail.com",
-    "github": "snood1205"
+    "gitlab": "snood1205"
   },
   "keywords": [
     "Angular",

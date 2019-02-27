@@ -19,13 +19,13 @@ yarn add camera-angulara
 2. Nightly build
 
 ```bash
-yarn add https://github.com/snood1205/camera-angulara#staging
+yarn add https://gitlab.com/snood1205/camera-angulara#staging
 ```
 
 3. Edge build (will break a lot do not use for production)
 
 ```bash
-yarn add https://github.com/snood1205/camera-angulara#edge
+yarn add https://gitlab.com/snood1205/camera-angulara#edge
 ```
 
 ## Usage
@@ -34,4 +34,4 @@ yarn add https://github.com/snood1205/camera-angulara#edge
 
 ## Contributing
 
-Feel free to report issues and complete pull requests using GitHub.
+Feel free to report issues and complete pull requests using GitLab.

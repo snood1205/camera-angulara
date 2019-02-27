@@ -53,7 +53,7 @@ Depending on the violation, the maintainers may decide that violations of this c
 
 ### Other Community Standards
 
-As a project on GitHub, this project is additionally covered by the [GitHub Community Guidelines](https://help.github.com/articles/github-community-guidelines/).
+As a project on GitLab, this project is additionally covered by the [GitLab Community Guidelines](https://help.gitlab.com/articles/gitlab-community-guidelines/).
 
 Additionally, as a project hosted on npm, is is covered by [npm, Inc's Code of Conduct](https://www.npmjs.com/policies/conduct).
 
@@ -89,7 +89,7 @@ Members expelled from events or venues with any sort of paid attendance will not
 
 Maintainers and other leaders who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership. These may include anything from removal from the maintainer team to a permanent ban from the community.
 
-Additionally, as a project hosted on both GitHub and npm, [their own Codes of Conducts may be applied against maintainers of this project](#other-community-standards), externally of this project's procedures.
+Additionally, as a project hosted on both GitLab and npm, [their own Codes of Conducts may be applied against maintainers of this project](#other-community-standards), externally of this project's procedures.
 
 ### Enforcement Examples
 
