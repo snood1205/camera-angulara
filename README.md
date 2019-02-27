@@ -1,3 +1,6 @@
+**THIS PROJECT IS ARCHIVED AND HAS MOVED TO GITLAB**
+It is now located [here](https://gitlab.com/snood1205/camera-angulara)
+
 # Camera Angulara
 [![npm version](https://badge.fury.io/js/camera-angulara.svg)](https://badge.fury.io/js/camera-angulara)
 
@@ -34,4 +37,4 @@ yarn add https://github.com/snood1205/camera-angulara#edge
 
 ## Contributing
 
-Feel free to report issues and complete pull requests using GitHub.
+Feel free to report issues and complete pull requests using GitLab.
