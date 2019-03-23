@@ -1,6 +1,3 @@
-**THIS PROJECT IS ARCHIVED AND HAS MOVED TO GITLAB**
-It is now located [here](https://gitlab.com/snood1205/camera-angulara)
-
 # Camera Angulara
 [![npm version](https://badge.fury.io/js/camera-angulara.svg)](https://badge.fury.io/js/camera-angulara)
 
